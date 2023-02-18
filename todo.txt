@@ -1,0 +1,2 @@
+carousel not sliding on its own
+login/register action is to be defined + pages are to be made for that
