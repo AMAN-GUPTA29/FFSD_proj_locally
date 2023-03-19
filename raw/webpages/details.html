@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Details</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
@@ -24,7 +24,6 @@
 
 .form{
     width: 100%;
-    margin: 0px 0px 25px 0px;
 }
 
 .input-group{
@@ -43,6 +42,7 @@
     font-size: large;
     text-indent: 40px;
 }
+
 .form input:hover{
     border: 3px solid black;
 }
@@ -79,7 +79,7 @@
 .input-group2{
     width: fit-content;
     margin: auto;
-    margin-top: 25px ;
+    margin-top: 40px ;
 }
 
 .brands{
@@ -97,33 +97,24 @@
 <body>
     
     <div class="form-container">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <div class="form">
             <div class="input-group">
-                <label for="email">Email :</label><br>
-                <span><i class="fa-solid fa-envelope fa-lg"></i></span>
-                <input type="email" id="email">
+                <label for="Aadhar">Aadhar No :</label><br>
+                <span><i class="fa-solid fa-user"></i></span>
+                <input type="Aadhar" id="Aadhar">
             </div>
             <div class="input-group">
-                <label for="password">Password :</label><br>
-                <span><i class="fa-solid fa-key fa-lg"></i></span>
-                <input type="password" id="password">
+                <label for="pan">Pan Card No:</label><br>
+                <span><i class="fa-solid fa-address-card"></i></span>
+                <input type="pan" id="pan">
             </div>
             <div class="input-group">
-              <button>Submit</button>
-            </div>            
-        </div>
-        <div>Don't have an account? <a href="register.html"> Register</a></div>
-        <div class="input-group2">
-            <div class="divider">
-                <hr>Login using<hr>
-            </div>
-            <div class="brands">
-                <i class="fa-brands fa-google fa-lg"></i>
-                <i class="fa-brands fa-twitter fa-lg"></i>
-                <i class="fa-brands fa-instagram fa-lg"></i>
+            <button>Register</button>
             </div>
             
+        </div>
+
         </div>
     </div>
 

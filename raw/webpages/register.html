@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
@@ -19,12 +19,11 @@
     margin: auto;
     text-align: center;
     padding: 20px;
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 
 .form{
     width: 100%;
-    margin: 0px 0px 25px 0px;
 }
 
 .input-group{
@@ -43,6 +42,7 @@
     font-size: large;
     text-indent: 40px;
 }
+
 .form input:hover{
     border: 3px solid black;
 }
@@ -79,7 +79,7 @@
 .input-group2{
     width: fit-content;
     margin: auto;
-    margin-top: 25px ;
+    margin-top: 40px ;
 }
 
 .brands{
@@ -97,8 +97,13 @@
 <body>
     
     <div class="form-container">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <div class="form">
+            <div class="input-group">
+                <label for="Name">Name :</label><br>
+                <span><i class="fa-solid fa-user"></i></span>
+                <input type="name" id="name">
+            </div>
             <div class="input-group">
                 <label for="email">Email :</label><br>
                 <span><i class="fa-solid fa-envelope fa-lg"></i></span>
@@ -110,11 +115,11 @@
                 <input type="password" id="password">
             </div>
             <div class="input-group">
-              <button>Submit</button>
-            </div>            
+             <a href="details.html"> <button>Continue</button></a>
+            </div>
+            
         </div>
-        <div>Don't have an account? <a href="register.html"> Register</a></div>
-        <div class="input-group2">
+        <!-- <div class="input-group2">
             <div class="divider">
                 <hr>Login using<hr>
             </div>
@@ -122,7 +127,7 @@
                 <i class="fa-brands fa-google fa-lg"></i>
                 <i class="fa-brands fa-twitter fa-lg"></i>
                 <i class="fa-brands fa-instagram fa-lg"></i>
-            </div>
+            </div> -->
             
         </div>
     </div>
