@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>locally</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Mynerve&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <style>
+        .special {
+            font-family: 'Anton', sans-serif;
+        }
+
+        .curve-border {
+            border-radius: 8px;
+        }
+
+        .flex-right {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .flex-mid {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flex-left {
+            display: flex;
+            margin-right: auto;
+        }
+
+        .fltr {
+            border-radius: 5px;
+        }
+
+        .card {
+            box-shadow: 1px 1px 1px 3px rgb(219, 219, 219);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark mb-5 p-3" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+                <input type="button" class="btn btn-outline-light flex-right" value="Profile">
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="container d-flex">
+        <input type="button" class="btn btn-dark flex-left px-5" value="Filters">
+        <input type="button" class="btn btn-dark flex-mid px-5" value="Place">
+        <input type="button" class="btn btn-dark flex-right px-5" value="SortBy">
+    </div> -->
+
+    <div class="container mb-5  ">
+        <input type="button" class="border-dark flex-left px-5 py-2 fltr mb-2" value="Filters">
+        <div class="container-fluid">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png"
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png'
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png"
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png'
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png"
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png'
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png"
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png'
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png"
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png'
+                            class="img-fluid rounded-start" alt="image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Name : Name</h5>
+                            <h5 class="card-title">Service : Service name(Like mobile repair or book auto)</h5>
+                            <h5 class="card-title">Charge : </h5>
+                            <p class="card-text mb-4">Good has been here for last 2 years and has good review.</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                            <h6><a href="https://duckduckgo.com/?q=hire&ia=definition">Hire</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups flex">
+            <span class="flex-mid">
+                <div class="btn-group me-2 flex-" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-outline-secondary" style="min-width: 100px;">Previous</button>
+                </div>
+                <div class="btn-group me-2" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-secondary" style="min-width: 100px;">Next</button>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+            <div class="col mb-3">
+                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+                <h3>
+                    <p class="text-muted">locally © 2022</p>
+                </h3>
+            </div>
+
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+
+            </div>
+
+            <div class="col mb-3">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
