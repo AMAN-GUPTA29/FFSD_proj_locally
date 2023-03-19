@@ -1,0 +1,10 @@
+#a1, #a2 , #a3 ,#a4
+{
+    border:1px;
+   flex-basis: 2px;
+   flex-wrap: wrap;
+    border-color:#EEEEEE;
+    border-style: solid;
+    padding-inline: 2px;
+
+}
