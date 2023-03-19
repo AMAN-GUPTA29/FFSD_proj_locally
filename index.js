@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path')
 const bodyparser = require('body-parser')
 const sendIndex = require('./jsData/indexCardDetails')
+const cardDetails = require('./jsData/customerViewData')
 
 const databasePath = path.join(__dirname, 'data', 'database.db')
 const db = new sqlite3.Database(databasePath, (err) => {
@@ -35,4 +36,25 @@ app.get('/about', (req, res) => {
 
 app.get('/contact', (req, res) => {
     res.render('contact')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+
+app.get('/register', (req, res) => {
+    res.render('register')
+})
+
+app.get('/details', (req, res) => {
+    res.end("<h1>Register First</h1>")
+})
+
+app.post('/details', (req, res) => {
+    console.log(req.body);
+    res.render('details')
+})
+
+app.get('/customerView', (req, res) => {
+    res.render('customerView', cardDetails)
 })
