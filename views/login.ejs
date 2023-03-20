@@ -101,22 +101,22 @@
 
     <div class="form-container">
         <h1>Login</h1>
-        <div class="form">
+        <form class="form" action="/customerView" method="post">
             <div class="input-group">
                 <label for="email">Email :</label><br>
                 <span><i class="fa-solid fa-envelope fa-lg"></i></span>
-                <input type="email" id="email">
+                <input type="text" id="email" name="email">
             </div>
             <div class="input-group">
                 <label for="password">Password :</label><br>
                 <span><i class="fa-solid fa-key fa-lg"></i></span>
-                <input type="password" id="password">
+                <input type="password" id="password" name="password">
             </div>
             <div class="input-group">
-                <button>Submit</button>
+                <button type="submit" onclick="SubmitEvent">Submit</button>
             </div>
-        </div>
-        <div>Don't have an account? <a href="register.html"> Register</a></div>
+        </form>
+        <div>Don't have an account? <a href="/register"> Register</a></div>
         <div class="input-group2">
             <div class="divider">
                 <hr>Login using

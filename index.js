@@ -56,5 +56,14 @@ app.post('/details', (req, res) => {
 })
 
 app.get('/customerView', (req, res) => {
+    res.end("<h1>Login First</h1>")
+})
+
+app.post('/customerView', (req, res) => {
+    console.log(req.body)
     res.render('customerView', cardDetails)
+})
+
+app.get('/profile', (req, res) => {
+    res.render('profile')
 })
