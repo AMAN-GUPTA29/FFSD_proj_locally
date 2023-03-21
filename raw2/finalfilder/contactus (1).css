@@ -1,0 +1,13 @@
+#a6
+{
+    border:1px;
+   flex-basis: 2px;
+   flex-wrap: wrap;
+    border-color:#DDDDDD;
+    border-style: solid;
+    padding-inline: 2px;
+    border-radius: 8%;
+    background-size: 40%;
+    background-color:#FAF7F0;
+
+}

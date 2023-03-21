@@ -1,124 +1,329 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>locally</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link href="./css/index.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
-    <style>
-        .width--control--img{
-            max-width: 100%;
-            height: 50%;
-        }
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
 
-    </style>
-</head>
+    <title>Document</title>
+  </head>
 
-<body>
-    <%- include('navbar_customer') %>
+  <body>
+    <header class="header">
+        <a href="/">
+          <img class="logo" alt="Startup logo" src="images/logo.png" />
+        </a>
+  
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li><a class="main-nav-link" href="/">Home</a></li>
+            <li><a class="main-nav-link" href="/about">About Us</a></li>
+            <li>
+              <a class="main-nav-link" href="/#testimonials">Testimonials</a>
+            </li>
+            <li><a class="main-nav-link" href="/contact">ContactUs</a></li>
+            <li><a class="main-nav-link nav-cta" href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </header>
+  
 
+    <main>
+      <section class="section-hero">
+        <div class="hero">
+          <div class="hero-white">
+            <div class="hero-text-box">
+              <h1 class="heading-primary heading-main">
+                Get things done with our trusted local professionals
+              </h1>
+              <p class="hero-description discription-main">
+                The smart 365-days-per-year food subscription that will make you
+                eat healthy again. Tailored to your personal tastes and
+                nutritional needs.
+              </p>
 
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+              <div class="butt-main">
+                <a href="#cta" class="btn btn--full margin-right-sm"
+                  >Get started</a
+                >
+
+                <a href="#how" class="btn btn--outline">Learn more &darr;</a>
+              </div>
+            </div>
+            <div class="delivered-meals">
+              <div class="delivered-imgs">
+                <img
+                  src="images/img/customers/customer-1.jpg"
+                  alt="Customer photo"
+                />
+                <img
+                  src="images/img/customers/customer-2.jpg"
+                  alt="Customer photo"
+                />
+                <img
+                  src="images/img/customers/customer-3.jpg"
+                  alt="Customer photo"
+                />
+                <img
+                  src="images/img/customers/customer-4.jpg"
+                  alt="Customer photo"
+                />
+                <img
+                  src="images/img/customers/customer-5.jpg"
+                  alt="Customer photo"
+                />
+                <img
+                  src="images/img/customers/customer-6.jpg"
+                  alt="Customer photo"
+                />
+              </div>
+              <p class="delivered-text">
+                <span>250,000+</span> Happy Customers
+              </p>
+            </div>
+          </div>
+          <div class="hero-img-box">
+            <picture>
+              <source srcset="images/img/hero.webp" type="images/image/webp" />
+              <source
+                srcset="images/img/hero-min.png"
+                type="images/image/png"
+              />
+
+              <!-- <img
+                src="img/hero-min.png"
+                class="hero-img"
+                alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              /> -->
+            </picture>
+          </div>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./images/crousal1.jpeg" class="d-block w-100" alt="code/tech">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/crousal2.jpeg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/crousal3.jpeg" class="d-block w-100" alt="...">
-            </div>
+      </section>
+
+      <section class="section-featured">
+        <div class="container">
+          <h2 class="heading-featured-in">As featured in</h2>
+          <div class="logos">
+            <img src="images/img/logos/techcrunch.png" alt="Techcrunch logo" />
+            <img
+              src="images/img/logos/business-insider.png"
+              alt="Business Insider logo"
+            />
+            <img
+              src="images/img/logos/the-new-york-times.png"
+              alt="The New York Times logo"
+            />
+            <img src="images/img/logos/forbes.png" alt="Forbes logo" />
+            <img src="images/img/logos/usa-today.png" alt="USA Today logo" />
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+      </section>
 
-    <div class="container bg-light">
-        <h1 class="text-center p-5">Success Stories</h1>
-        <div class="row middle pb-4">
-            <% image.forEach(img => { %>
-                <div class="col d-flex justify-content-center m-2">
-                    <div class="card" style="width: 18rem;">
-                        <img src= <%= img.href %>
-                            class="card-img-top width--control--img" alt= <%= img.alt %> >
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text"> <%= img.description %> </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            <% }) %>
+      <section class="part-sec">
+        <div class="part1">
+          <h2 class="heading-secondary secondary-changes">
+            How we started. . .
+          </h2>
 
+          <p class="content-para">
+            Locally is a local startup that provides various local services to
+            its customers.The company connect local service providers with
+            people in their community who needed those services.
+          </p>
+          <p class="content-para">
+            The idea for Locally came about when the founders noticed that many
+            local service providers in their area were struggling to reach
+            customers online. They realized that there was a need for a platform
+            that would make it easier for local service providers to connect
+            with customers and for customers to find the services they needed in
+            their area.
+          </p>
 
-            <!-- <div class="col d-flex justify-content-center m-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://farm6.static.flickr.com/5249/5261980632_b7e920ba97_b.jpg" class="card-img-top width--control--img"
-                        alt="i1">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col d-flex justify-content-center m-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://thumbs.dreamstime.com/b/indian-female-shopkeeper-operating-laptop-counter-india-january-indian-female-shopkeeper-operating-laptop-counter-168319621.jpg"
-                        class="card-img-top width--control--img" alt="i2">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col d-flex justify-content-center m-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://i.dailymail.co.uk/i/pix/2010/10/14/article-1320426-0B9BD3DB000005DC-346_634x752.jpg"
-                        class="card-img-top width--control--img" alt="i3">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div> -->
+          <p class="content-para">
+            Locally is a startup that provides local services by connecting
+            service providers with customers in their community. The idea for
+            Locally came from a need to help local service providers reach
+            customers online. The founders researched the market, identified
+            in-demand services, and built a platform with a website and mobile
+            app. They used various marketing strategies to promote the platform
+            and partnered with local businesses. Today, Locally is a popular
+            destination for people looking for local services.
+          </p>
         </div>
-    </div>
+        <div class="part2">
+          <h2 class="heading-secondary secondary-changes postion-change">
+            Future Plans. . .
+          </h2>
 
-    <%- include('footer_customer') %>
+          <p class="content-para-2">
+            At Locally, we are committed to providing high-quality and reliable
+            services to our customers while continuing to grow and expand our
+            business. Here are some of our key future plans:
+          </p>
+          <p class="content-para-2">
+            <li style="list-style-type: none">
+              <ul class="list-style">
+                Expand our service offerings
+              </ul>
+              <ul class="list-style">
+                Increase our service coverage area
+              </ul>
+              <ul class="list-style">
+                Improve our technology platform
+              </ul>
+              <ul class="list-style">
+                Build partnerships with other local businesses
+              </ul>
+              <ul class="list-style">
+                Hire and train more staff
+              </ul>
+              <ul class="list-style">
+                Focus on sustainability
+              </ul>
+            </li>
+          </p>
+        </div>
+      </section>
+
+      <%- include('indexCards.ejs') %>
+
+      <section class="section-testimonials partsec2" id="testimonials">
+        <div class="part11">
+          <div class="testimonials-container">
+            <span class="subheading">Testimonials</span>
+            <h2 class="heading-secondary">
+              Once you try it, you can't go back
+            </h2>
+
+            <div class="testimonials">
+              <div class="testi-background">
+                <figure class="testimonial">
+                  <img
+                    class="testimonial-img"
+                    alt="Photo of customer Dave Bryson"
+                    src="images/img/customers/dave.jpg"
+                  />
+                  <blockquote class="testimonial-text">
+                    Inexpensive, healthy and great-tasting meals, without even
+                    having to order manually! It feels truly magical.
+                  </blockquote>
+                  <p class="testimonial-name">&mdash; Dave Bryson</p>
+                </figure>
+              </div>
+
+              <div class="testi-background">
+                <figure class="testimonial">
+                  <img
+                    class="testimonial-img"
+                    alt="Photo of customer Ben Hadley"
+                    src="images/img/customers/ben.jpg"
+                  />
+                  <blockquote class="testimonial-text">
+                    The AI algorithm is crazy good, it chooses the right meals
+                    for me every time. It's amazing not to worry about food
+                    anymore!
+                  </blockquote>
+                  <p class="testimonial-name">&mdash; Ben Hadley</p>
+                </figure>
+              </div>
+
+              <div class="testi-background">
+                <figure class="testimonial">
+                  <img
+                    class="testimonial-img"
+                    alt="Photo of customer Steve Miller"
+                    src="images/img/customers/steve.jpg"
+                  />
+                  <blockquote class="testimonial-text">
+                    Omnifood is a life saver! I just started a company, so
+                    there's no time for cooking. I couldn't live without my
+                    daily meals now!
+                  </blockquote>
+                  <p class="testimonial-name">&mdash; Steve Miller</p>
+                </figure>
+              </div>
+
+              <div class="testi-background">
+                <figure class="testimonial">
+                  <img
+                    class="testimonial-img"
+                    alt="Photo of customer Hannah Smith"
+                    src="images/img/customers/hannah.jpg"
+                  />
+                  <blockquote class="testimonial-text">
+                    I got Omnifood for the whole family, and it frees up so much
+                    time! Plus, everything is organic and vegan and without
+                    plastic.
+                  </blockquote>
+                  <p class="testimonial-name">&mdash; Hannah Smith</p>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="part22">
+          <div class="gallery">
+
+            <% for(let  i = 0; i < 12; i++){ %>
+                <figure class="gallery-item">
+                    <img
+                      src="images/image/allservice/<%= i+1 %>.jpg"
+                      alt="Photo of beautifully
+                  arranged food"
+                    />
+                </figure>
+            <% } %>
+
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="seller-login">
+          <h2 class="heading-secondary marghead">
+            Wanna become a service provider click below
+          </h2>
+          <div class="container grid grid--2-cols grid--center-v">
+            <div>
+              <p class="step-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus reiciendis, non officiis, magni ducimus temporibus
+                praesentium assumenda excepturi tempora quae quas, suscipit
+                labore. Id cumque quasi, natus obcaecati quaerat non.
+              </p>
+            </div>
+            <div>
+              <a href="/sellerlogin" class="btn btn--full margin-right-sm margbutton"
+                >Get started</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="modify"></div>
+      </section>
+
+      <%- include('footerv2.ejs') %>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-</body>
-
+    </main>
+  </body>
 </html>

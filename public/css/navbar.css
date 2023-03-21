@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .headeer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8edeb;
+  
+    /* Because we want header to be sticky later */
+    height: 6.4rem;
+    padding: 0 4.8rem;
+    position: relative;
+  }
+  
+  .loggo {
+    height: 2.8rem;
+  }
+  
+  .maiin-naav {
+    margin-left: 28%;
+  }
+  
+  .maiin-naav-lisst {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3.4rem;
+  }
+  
+  .maiin-naav-linnk:link,
+  .maiin-naav-linnk:visited {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    font-weight: 400;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+  }
+  
+  .maiin-naav-linnk:hover,
+  .maiin-naav-linnk:active {
+    color: #cb997e;
+  }
+  
+  .maiin-naav-linnk.naav-ctta:link,
+  .maiin-naav-linnk.naav-ctta:visited {
+    padding: 0.6rem 0.8rem;
+    border-radius: 9px;
+    color: #fff;
+    background-color: #bb3e03;
+  }
+  
+  .maiin-naav-linnk.naav-ctta:hover,
+  .maiin-naav-linnk.naav-ctta:active {
+    background-color: #cb997e;
+  }
+  

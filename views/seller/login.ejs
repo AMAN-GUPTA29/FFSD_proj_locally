@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            width: 100vw;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20vh;
+        }
+
+        .form {
+            width: 100%;
+            margin: 0px 0px 25px 0px;
+        }
+
+        .input-group {
+            width: fit-content;
+            margin: auto;
+            margin-top: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .form input {
+            width: 350px;
+            height: 50px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: large;
+            text-indent: 40px;
+        }
+
+        .form input:hover {
+            border: 3px solid black;
+        }
+
+        .form label {
+            font-size: large;
+        }
+
+        .form span {
+            position: absolute;
+            top: 47px;
+            left: 10px;
+            z-index: 100;
+        }
+
+        .form button {
+            width: 350px;
+            height: 40px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: large;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .divider hr {
+            display: inline-block;
+            width: 100px;
+            align-self: center;
+            margin: auto 15px;
+        }
+
+        .input-group2 {
+            width: fit-content;
+            margin: auto;
+            margin-top: 25px;
+        }
+
+        .brands {
+            width: fit-content;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .brands i {
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1>Seller Login</h1>
+        <form class="form" action="/customerView" method="post">
+            <div class="input-group">
+                <label for="email">Email :</label><br>
+                <span><i class="fa-solid fa-envelope fa-lg"></i></span>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password :</label><br>
+                <span><i class="fa-solid fa-key fa-lg"></i></span>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <button type="submit" onclick="SubmitEvent">Submit</button>
+            </div>
+        </form>
+        <div>Don't have an account? <a href="/register"> Register</a></div>
+        <div class="input-group2">
+            <div class="divider">
+                <hr>Login using
+                <hr>
+            </div>
+            <div class="brands">
+                <i class="fa-brands fa-google fa-lg"></i>
+                <i class="fa-brands fa-twitter fa-lg"></i>
+                <i class="fa-brands fa-instagram fa-lg"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="scripts/loginValidation.js"></script>
+
+</body>
+
+</html>

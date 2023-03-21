@@ -22,6 +22,7 @@ app.use(express.static(`${__dirname}/public`))
 
 
 app.listen(8000)
+console.log("Listening to : http://localhost:8000/")
 
 // http://localhost:8000/images/crousal1.jpeg
 
@@ -66,4 +67,8 @@ app.post('/customerView', (req, res) => {
 
 app.get('/profile', (req, res) => {
     res.render('profile')
+})
+
+app.get("/sellerLogin", (req, res) => {
+    res.render('seller/login')
 })

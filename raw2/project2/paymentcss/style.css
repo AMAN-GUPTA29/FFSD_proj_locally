@@ -1,0 +1,104 @@
+body {
+  background-color: #cb997e;
+}
+
+.paylogo {
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-right: 5%;
+}
+
+.maindiv {
+  margin: 5% 10%;
+  padding: 5%;
+  background-color: #f8edeb;
+  border-radius: 10%;
+  height: 40rem;
+}
+
+.leftdiv {
+  display: inline-block;
+
+  background-color: #f8edeb;
+  height: 57rem;
+  border-radius: 10%;
+  margin-bottom: 10%;
+}
+
+.lefthead {
+  padding: 4%;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.cta-form {
+  padding: 4%;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 3.2rem;
+  row-gap: 2.4rem;
+}
+
+.cta-form label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+.cta-form input,
+.cta-form select {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  background-color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 1px 2x rgba(0, 0, 0, 0.1);
+}
+
+.cta-form input::placeholder {
+  color: #aaa;
+}
+
+.cta *:focus {
+  outline: none;
+
+  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+
+.padtop {
+  margin-top: 3%;
+}
+
+.modifyye {
+  margin-bottom: 0;
+}
+
+.containerr {
+  /* 1140px */
+  max-width: 120rem;
+
+  margin: 0 auto;
+}
+
+.gridd {
+  display: grid;
+  column-gap: 6.4rem;
+  row-gap: 9.6rem;
+
+  /* margin-bottom: 9.6rem; */
+}
