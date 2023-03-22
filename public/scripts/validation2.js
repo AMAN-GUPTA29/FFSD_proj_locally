@@ -1,8 +1,8 @@
 'use strict'
 
 // const form = document.querySelector('form')
-const email = document.getElementById('email')
-const password = document.getElementById('password')
+const emai2l = document.getElementById('create-email')
+const password2 = document.getElementById('create-password')
 
 const capitalAlpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 const num = "1234567890".split("")
@@ -27,16 +27,17 @@ function check(mail){
     else return false
 }
 
-document.addEventListener('submit', (event) => {
+
+document.getElementById('f2').addEventListener('submit', (event) => {
     let errs = "";
     // console.log(password.value.length)
-    if (!check(email.value)){
-        errs += "Email must be of format xyz@abc.pqr"
-    }
-    else if (password.value.length <= 5 || password.value.length >= 21) {
+    // if (!check(email2.value)){
+    //     errs += "Email must be of format xyz@abc.pqr"
+    // }
+    if (password2.value.length <= 5 || password2.value.length >= 21) {
         errs += "Password Must Be At Least Of Length 6 and Max Length Can Be 20.\n"
     } else {
-        let p = password.value.split('');
+        let p = password2.value.split('');
         let a = 0;
         let b = 0;
         let c = 0;

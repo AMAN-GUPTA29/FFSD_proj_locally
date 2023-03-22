@@ -103,7 +103,7 @@ app.post('/getin', (req, res) => {
                 count++;
             });
             if(count == 0){
-                res.send("lol")
+                res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
             }else{
                 res.redirect('/customerView')
             }
@@ -138,7 +138,7 @@ app.post('/seller/getin', (req, res) => {
                 count++;
             });
             if(count == 0){
-                res.send("lol")
+                res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
             }else{
                 res.redirect('/seller/sellerView')
             }
