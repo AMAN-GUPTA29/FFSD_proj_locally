@@ -15,7 +15,7 @@
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <form action="#">             <!-- Form starts -->
+      <form action="/welcome" method="post">             <!-- Form starts -->
         <h1>Create Account</h1>
         <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -23,14 +23,14 @@
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button>Sign Up</button>
-      </form>                     <!-- Form ends -->
+        <input type="text" placeholder="Name" name="name" id="create-name" required/>
+        <input type="email" placeholder="Email" name="email" id="create-email" required/>
+        <input type="password" placeholder="Password" name="password" id="create-password" required/>
+        <button onclick="SubmitEvent">Sign Up</button>
+      </form>                       <!-- Form ends -->
     </div>
     <div class="form-container sign-in-container">
-      <form action="#">                 <!-- Form starts -->
+      <form action="/getin" method="post">                 <!-- Form starts -->
         <h1>Sign in</h1>
         <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -38,10 +38,10 @@
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <span>or use your account</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
         <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <button onclick="SubmitEvent">Sign In</button>
       </form>                             <!-- Form ends -->
     </div>
     <div class="overlay-container">

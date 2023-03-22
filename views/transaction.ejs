@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand text-warning" href="#"><b>Locally</b></a>
+          <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#expandme" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="expandme">
+              <div class="navbar-nav">
+                  <a href="home.html" class="nav-link text-white mx-4">Home</a>
+                  <a href="services.html" class="nav-link text-white mx-4">Your Services</a>
+                  <a href="info.html" class="nav-link text-white mx-4">Info</a>
+                  <a href="chat.html" class="nav-link text-white me-3 position-absolute end-0 me-5">Chat</a>
+                </div>
+            </div>
+        </div>
+    </nav> -->
+
+    <%- include('navAfterLogin') %>
+
+    <div class="container">
+        <h1 class="text-center">All Your Past Transactions</h1>
+
+        <table class="table  table-striped table-hover table-bordered border">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Past Transactions</th>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Rupees(&#8377;)</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+                <th scope="row">1</th>
+                <td>Varun</td>
+                <td>@175</td>
+                <td>18-03-2023</td>
+                <td>21:45</td>
+                <td>&#8377; 40.00</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Chaitanya</td>
+                <td>@199</td>
+                <td>18-03-2023</td>
+                <td>14:20</td>
+                <td>&#8377; 120.00</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Vivek</td>
+                <td>@007</td>
+                <td>10-03-2023</td>
+                <td>10:07</td>
+                <td>&#8377; 70.00</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Uday</td>
+                <td>@118</td>
+                <td>9-03-2023</td>
+                <td>18:50</td>
+                <td>&#8377; 200.00</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Eswar</td>
+                <td>@277</td>
+                <td>9-03-2023</td>
+                <td>16:25</td>
+                <td>&#8377; 30.00</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Lakshman</td>
+                <td>@107</td>
+                <td>9-03-2023</td>
+                <td>7:30</td>
+                <td>&#8377; 80.00</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Amruth</td>
+                <td>@105</td>
+                <td>8-03-2023</td>
+                <td>20:10</td>
+                <td>&#8377; 250.00</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Murthy</td>
+                <td>@118</td>
+                <td>8-03-2023</td>
+                <td>15:40</td>
+                <td>&#8377; 40.00</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Mukesh</td>
+                <td>@63</td>
+                <td>8-03-2023</td>
+                <td>11:30</td>
+                <td>&#8377; 90.00</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Manjeeth</td>
+                <td>@54</td>
+                <td>8-03-2023</td>
+                <td>9:00</td>
+                <td>&#8377; 40.00</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>Karthik</td>
+                <td>@163</td>
+                <td>7-03-2023</td>
+                <td>18:15</td>
+                <td>&#8377; 80.00</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>Vivek.N</td>
+                <td>@157</td>
+                <td>7-03-2023</td>
+                <td>14:00</td>
+                <td>&#8377; 80.00</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td>Narasimha</td>
+                <td>@185</td>
+                <td>7-03-2023</td>
+                <td>11:35</td>
+                <td>&#8377; 120.00</td>
+              </tr>
+              <tr>
+                <th scope="row">14</th>
+                <td>Chaitanya</td>
+                <td>@199</td>
+                <td>7-03-2023</td>
+                <td>10:00</td>
+                <td>&#8377; 40.00</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Amruth</td>
+                <td>@105</td>r-pranav.
+                <td>6-03-2023</td>
+                <td>18:50</td>
+                <td>&#8377; 50.00</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <%- include('footer_customer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>

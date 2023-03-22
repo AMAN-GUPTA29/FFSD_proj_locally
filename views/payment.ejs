@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/paymentcss/style.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="#">
+      <img class="logo paylogo" alt="Startup logo" src="/images/logo.png" />
+    </a>
+    <div class="maindiv">
+      <div class="data">
+        <h3 class="heading-tertiary">
+          You are opting for cleaning service by Aman gupta
+        </h3>
+
+        <div class="container grid grid--2-cols grid--center-v">
+          <div>
+            <p class="step-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus reiciendis, non officiis, magni ducimus temporibus
+              praesentium assumenda excepturi tempora quae quas, suscipit
+              labore. Id cumque quasi, natus obcaecati quaerat non.
+            </p>
+          </div>
+          <div>
+            <p class="step-description margbutton">Your bill is</p>
+            <h2 class="heading-secondary margbutton">$72.99</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container grid grid--2-cols grid--center-v">
+      <div class="leftdiv">
+        <div class="leftdivpad">
+          <div>
+            <h3 class="heading-tertiary lefthead">Enter the details...</h3>
+            <form class="cta-form" action="#">
+              <div>
+                <label for="full name">Full Name</label>
+                <input
+                  id="full name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div>
+                <label for="email">Email address</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="me@example.com"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="full name">Address</label>
+                <input
+                  id="full name"
+                  type="text"
+                  placeholder="Address"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="select-where">Where did you hear of us?</label>
+                <select name="" id="select-where " required>
+                  <option value="">Please chose one option</option>
+                  <option value="friends">friends and family</option>
+                  <option value="youtube">Youtube</option>
+                  <option value="Facebook">FaceBook add</option>
+                  <option value="Podcast">Podcast</option>
+                  <option value="other">other</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="leftdiv">
+        <div class="leftdivpad">
+          <div>
+            <h3 class="heading-tertiary lefthead">Enter the Card details...</h3>
+            <form class="cta-form" action="#">
+              <div>
+                <label for="full name">Enter Card Number</label>
+                <input
+                  id="full name"
+                  type="number"
+                  placeholder="Card Number"
+                  required
+                />
+              </div>
+              <div class="containerr gridd grid--2-cols modifyye">
+                <div>
+                  <label for="exp">Expirey Month</label>
+                  <input
+                    id="exp"
+                    type="text"
+                    min="1"
+                    max="12"
+                    maxlength="2"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="exp">Expirey Year</label>
+                  <input id="exp" type="text" required />
+                </div>
+              </div>
+
+              <div>
+                <label for="full name">CVV</label>
+                <input id="full name" type="number" maxlength="3" required />
+              </div>
+
+              <button class="btn btn--form padtop">Pay now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .adjust {
+    height: 9rem;
+    background-color: #FAD6A5;
+  }
+  
+  .footeer {
+    padding: 0 0 6.4rem 0;
+  
+    background-color: #fae5d3;
+  }
+  
+  .containeer {
+    /* 1140px */
+    max-width: 120rem;
+    padding: 0 3.2rem;
+    margin: 0 auto;
+  }
+  
+  .griid {
+    display: grid;
+    column-gap: 6.4rem;
+    row-gap: 9.6rem;
+  
+    /* margin-bottom: 9.6rem; */
+  }
+  
+  .griid--footeer {
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  }
+  
+  .footeer-headinng {
+    font-family: "Rubik", sans-serif;
+    color: #555;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 4rem;
+  }
+  
+  .loggo-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footeer-logoo {
+    display: block;
+    margin-bottom: 3.2rem;
+  }
+  
+  .loggo {
+    height: 2.4rem;
+  }
+  
+  .sociaal-links {
+    list-style: none;
+    display: flex;
+    gap: 2.4rem;
+  }
+  
+  .sociaal-icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+  
+  .copyrighht {
+    font-family: "Rubik", sans-serif;
+  
+    font-size: 0.9rem;
+    color: #767676;
+    line-height: 1.6;
+    margin-top: auto;
+  }
+  
+  .contactts {
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 1.6;
+  }
+  
+  .addreess {
+    font-family: "Rubik", sans-serif;
+    color: #555;
+    margin-bottom: 1.6rem;
+    font-size: 64%;
+  }
+  
+  .footeer-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.53rem;
+  }
+  
+  .footeer-link:link,
+  .footeer-link:visited {
+    font-family: "Rubik", sans-serif;
+    text-decoration: none;
+    font-size: 1.024rem;
+    color: #767676;
+    transition: all 0.3s;
+  }
+  
+  .footeer-link:link,
+  .footeer-link:visited {
+    font-family: "Rubik", sans-serif;
+    color: #555;
+  }
+  
+  .sidemarg {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  
+  /*******************************************/
+  .waves {
+    padding-bottom: 5%;
+    position: relative;
+    margin-top: 2%;
+  }
+  
+  footer .wave {
+    position: absolute;
+    top: -10rem;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background: url(/images/image/wave4.png);
+    background-size: 100rem 10rem;
+  }
+  
+  footer .wave#wave1 {
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+  
+    animation: animateWave 4s linear infinite;
+  }
+  
+  footer .wave#wave2 {
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 1rem;
+  
+    animation: animateWave_02 4s linear infinite;
+  }
+  
+  footer .wave#wave3 {
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 1.5rem;
+  
+    animation: animateWave 3s linear infinite;
+  }
+  
+  footer .wave#wave4 {
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 2rem;
+  
+    animation: animateWave_02 3s linear infinite;
+  }
+  
+  @keyframes animateWave {
+    0% {
+      background-position-x: 100rem;
+    }
+  
+    100% {
+      background-position-x: 0rem;
+    }
+  }
+  
+  @keyframes animateWave_02 {
+    0% {
+      background-position-x: 0rem;
+    }
+  
+    100% {
+      background-position-x: 100rem;
+    }
+  }
+  
+
+
+
+  
