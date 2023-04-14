@@ -8,6 +8,7 @@ const sellerTransactions = require('./jsData/sellerTransactions')
 const mongoose = require('mongoose')
 const myModels = require('./mongooseUtil/models.js')
 const myAPI = require('./mongooseUtil/api.js')
+const uri = require('./mongooseUtil/mongo_pass.js')
 
 
 
@@ -20,7 +21,7 @@ const db = new sqlite3.Database(databasePath, (err) => {
     console.log("Database Connected !!!")
 })
 
-const uri = "mongodb+srv://ffsd_1:ffsd_1@ffsd.m0j0grz.mongodb.net/FFSD?retryWrites=true&w=majority";
+
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
