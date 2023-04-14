@@ -5,6 +5,9 @@ const bodyparser = require('body-parser')
 const sendIndex = require('./jsData/indexCardDetails')
 const cardDetails = require('./jsData/customerViewData')
 const sellerTransactions = require('./jsData/sellerTransactions')
+const mongoose = require('mongoose')
+const myModels = require('./mongooseUtil/models.js')
+const myAPI = require('./mongooseUtil/api.js')
 
 
 
@@ -16,6 +19,15 @@ const db = new sqlite3.Database(databasePath, (err) => {
     }
     console.log("Database Connected !!!")
 })
+
+const uri = "mongodb+srv://ffsd_1:ffsd_1@ffsd.m0j0grz.mongodb.net/FFSD?retryWrites=true&w=majority";
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+})
+.then(console.log("Connected !!!"))
+.catch(err => console.log(err))
 
 // let query = "create table seller(id int, name varchar(50), email varchar(50) primary key, password varchar(25), loggedin int)";
 // db.run(query, (err) => {
@@ -79,16 +91,26 @@ app.get('/profile', (req, res) => {
 
 app.post('/welcome', (req, res) => {
     // console.log(req.body)
-    var rrr = res;
-    let query = `insert into register(id, name, email, password, loggedin) values(${Date.now()}, "${req.body.name}", "${req.body.email}", "${req.body.password}", 1)`
-    db.run(query, (err) => {
-        if(err) {
-            console.log(err)
-            res.send("<h1>Email already taken !!!")
-        }else{
-            res.redirect('/customerView')
-        }
-    })
+    // var rrr = res;
+    // let query = `insert into register(id, name, email, password, loggedin) values(${Date.now()}, "${req.body.name}", "${req.body.email}", "${req.body.password}", 1)`
+    // db.run(query, (err) => {
+    //     if(err) {
+    //         console.log(err)
+    //         res.send("<h1>Email already taken !!!")
+    //     }else{
+    //         res.redirect('/customerView')
+    //     }
+    // })
+
+    let instance = {
+        userName : req.body.email,
+        password : req.body.password
+    }
+    
+    myAPI.save(myModels.customerModel, instance)
+    .then(res.redirect('/customerView'))
+    .catch(res.send("<h1>Email already taken !!! </h1>"))
+
 })
 
 app.post('/getin', (req, res) => {
