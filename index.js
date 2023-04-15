@@ -135,18 +135,33 @@ app.post('/getin', (req, res) => {
 
 })
 
-app.post('/seller/welcome', (req, res) => {
-    // console.log(req.body)
-    var rrr = res;
-    let query = `insert into seller(id, name, email, password, loggedin) values(${Date.now()}, "${req.body.name}", "${req.body.email}", "${req.body.password}", 1)`
-    db.run(query, (err) => {
-        if(err) {
-            console.log(err)
-            res.send("<h1>Email already taken !!!")
-        }else{
-            res.redirect('/seller/sellerView')
-        }
-    })
+// app.post('/seller/welcome', (req, res) => {
+//     // console.log(req.body)
+//     var rrr = res;
+//     let query = `insert into seller(id, name, email, password, loggedin) values(${Date.now()}, "${req.body.name}", "${req.body.email}", "${req.body.password}", 1)`
+//     db.run(query, (err) => {
+//         if(err) {
+//             console.log(err)
+//             res.send("<h1>Email already taken !!!")
+//         }else{
+//             res.redirect('/seller/sellerView')
+//         }
+//     })
+// 
+app.post('/seller/welcome', (req, res)=>{
+    console.log(req.body)
+ instance = {
+    name : req.body.name,
+    email : req.body.email,
+    password : req.body.password
+ }
+ myAPI.save(myModels.sellerModel, instance)
+ .then (res.redirect('/seller/sellerView'))
+ .catch((err)=>{
+    console.log(err)
+    res.send("<h1>Email already taken!!</h1>")
+ })
+
 })
 
 app.post('/seller/getin', (req, res) => {
