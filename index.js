@@ -9,9 +9,8 @@ const mongoose = require("mongoose");
 const myModels = require("./mongooseUtil/models.js");
 const myAPI = require("./mongooseUtil/api.js");
 const uri = require("./mongooseUtil/mongo_pass.js");
-const { Session } = require("inspector");
 const session = require("express-session");
-const MongoDBSession = require("connect-mongodb-session")(session);
+
 
 const databasePath = path.join(__dirname, "data", "database.db");
 const db = new sqlite3.Database(databasePath, (err) => {
@@ -148,6 +147,7 @@ app.post("/welcome", (req, res) => {
       console.log(doc._id);
       req.session.userID = doc._id;
       req.session.customer = true;
+      req.session.seller = false;
       res.redirect("/customerView");
     })
     .catch(res.send("<h1>Email already taken !!! </h1>"));
@@ -180,6 +180,7 @@ app.post("/getin", (req, res) => {
       console.log(`ID = `, data[0]._id);
       req.session.userID = data[0]._id;
       req.session.customer = true;
+      req.session.seller = false;
       res.redirect("/customerView");
     })
     .catch((err) => {
@@ -221,7 +222,13 @@ app.post("/seller/welcome", (req, res) => {
   };
   myAPI
     .save(myModels.sellerModel, instance)
-    .then(res.redirect("/seller/sellerView"))
+    .then(doc => {
+      console.log(doc._id);
+      req.session.userID = doc._id;
+      req.session.customer = false;
+      req.session.seller = true;
+      res.redirect("/seller/sellerView")
+    })
     .catch((err) => {
       console.log(err);
       res.send("<h1>Email already taken!!</h1>");
@@ -229,7 +236,7 @@ app.post("/seller/welcome", (req, res) => {
 });
 
 app.post("/seller/getin", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   let email1 = req.body.email;
   let password1 = req.body.password;
@@ -237,6 +244,9 @@ app.post("/seller/getin", (req, res) => {
     .find({ email: email1, password: password1 })
     .then((data) => {
       console.log("ID =" + data[0]._id);
+      req.session.userID = data[0]._id;
+      req.session.customer = false;
+      req.session.seller = true;
       res.redirect("/seller/sellerView");
     })
     .catch((err) => {
@@ -312,6 +322,15 @@ app.get("/seller/profile", redirectUnLoggedSeller, (req, res) => {
 
 app.get("/seller/transactions", redirectUnLoggedSeller, (req, res) => {
   res.render("seller/transaction", sellerTransactions);
+});
+
+app.get("/logout", (req, res) => {
+  if(req.session.userID){
+    res.clearCookie("sessionID")
+    res.redirect("/")
+  } else{
+    res.redirect("/")
+  }
 });
 
 // db.all("Select * from seller", (err, row) => {
