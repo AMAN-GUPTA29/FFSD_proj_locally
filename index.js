@@ -133,10 +133,10 @@ app.post('/getin', (req, res) => {
     //         }
     //     }
     // })
-    let email = req.body.email;
-    let password = req.body.password;
+    let email1 = req.body.email;
+    let password1 = req.body.password;
 
-    myModels.customerModel.find({email : email, password : password})
+    myModels.customerModel.find({email : email1, password : password1})
     .then(data => {
         console.log(`ID = `, data[0]._id);
         res.redirect('/customerView')
@@ -147,6 +147,7 @@ app.post('/getin', (req, res) => {
     })
 
 })
+
 
 // app.post('/seller/welcome', (req, res) => {
 //     // console.log(req.body)
@@ -179,24 +180,38 @@ app.post('/seller/welcome', (req, res)=>{
 
 app.post('/seller/getin', (req, res) => {
     console.log(req.body)
-    let query = `select * from seller where email='${req.body.email}' and password='${req.body.password}'`
-    db.all(query, [], (err, rows) => {
-        if(err){
-            console.log(err)
-        }else{
-            let count = 0;
-            rows.forEach(element => {
-                count++;
-            });
-            if(count == 0){
-                res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
-            }else{
-                res.redirect('/seller/sellerView')
-            }
-        }
-    })
+
+      let  email1= req.body.email
+      let password1 = req.body.password
+      myModels.sellerModel.find({email: email1, password: password1})
+      .then((data)=>{
+        console.log("ID =" + data[0]._id)
+        res.redirect('/seller/sellerView')
+      })
+      .catch((err)=>{
+        console.log(err)
+        res.send("<h1>  Either Id or Password or both are incorrect !!! </h1>")})
+
+    // let query = `select * from seller where email='${req.body.email}' and password='${req.body.password}'`
+    // db.all(query, [], (err, rows) => {
+    //     if(err){
+    //         console.log(err)
+    //     }else{
+    //         let count = 0;
+    //         rows.forEach(element => {
+    //             count++;
+    //         });
+    //         if(count == 0){
+    //             res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
+    //         }else{
+    //             res.redirect('/seller/sellerView')
+    //         }
+    //     }
+    // })
+
 
 })
+
 
 app.get('/customerView/display', (req, res) => {
     res.render('display')
