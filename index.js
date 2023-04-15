@@ -104,7 +104,8 @@ app.post('/welcome', (req, res) => {
     // })
 
     let instance = {
-        userName : req.body.email,
+        name : req.body.name,
+        email : req.body.email,
         password : req.body.password
     }
     
@@ -115,22 +116,34 @@ app.post('/welcome', (req, res) => {
 })
 
 app.post('/getin', (req, res) => {
-    console.log(req.body)
-    let query = `select * from register where email='${req.body.email}' and password='${req.body.password}'`
-    db.all(query, [], (err, rows) => {
-        if(err){
-            console.log(err)
-        }else{
-            let count = 0;
-            rows.forEach(element => {
-                count++;
-            });
-            if(count == 0){
-                res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
-            }else{
-                res.redirect('/customerView')
-            }
-        }
+    // console.log(req.body)
+    // let query = `select * from register where email='${req.body.email}' and password='${req.body.password}'`
+    // db.all(query, [], (err, rows) => {
+    //     if(err){
+    //         console.log(err)
+    //     }else{
+    //         let count = 0;
+    //         rows.forEach(element => {
+    //             count++;
+    //         });
+    //         if(count == 0){
+    //             res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
+    //         }else{
+    //             res.redirect('/customerView')
+    //         }
+    //     }
+    // })
+    let email = req.body.email;
+    let password = req.body.password;
+
+    myModels.customerModel.find({email : email, password : password})
+    .then(data => {
+        console.log(`ID = `, data[0]._id);
+        res.redirect('/customerView')
+    })
+    .catch(err => {
+        console.log(err);
+        res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
     })
 
 })
