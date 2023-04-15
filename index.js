@@ -27,7 +27,7 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(console.log("Connected !!!"))
+  .then(console.log("Mongoose Connected !!!"))
   .catch((err) => {
     console.log("FAILED TO CONNECT !!!");
     console.log(err);
@@ -213,6 +213,23 @@ const redirectUnLoggedSeller = (req, res, next) => {
   }
 };
 
+app.post('/seller/xtraDetails', (req, res) => {
+  console.log(req.body);
+  // res.end("<h1>OK</h1>")
+  let instance = {
+    aadhar : req.body.aadhar,
+    phone : req.body.phone,
+    address : req.body.address,
+    pointer : req.session.userID
+  }
+  myAPI.save(myModels.sellerDetail, instance)
+  .then(doc => {
+    console.log(doc.populate("pointer"));
+    res.redirect("/seller/sellerView");
+  })
+  .catch(e => console.log(e))
+})
+
 app.post("/seller/welcome", (req, res) => {
   console.log(req.body);
   instance = {
@@ -227,7 +244,8 @@ app.post("/seller/welcome", (req, res) => {
       req.session.userID = doc._id;
       req.session.customer = false;
       req.session.seller = true;
-      res.redirect("/seller/sellerView")
+      // res.redirect("/seller/sellerView")
+      res.render('seller/extraDetails')
     })
     .catch((err) => {
       console.log(err);
@@ -325,10 +343,10 @@ app.get("/seller/transactions", redirectUnLoggedSeller, (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  if(req.session.userID){
+  if (req.session.userID) {
     res.clearCookie("sessionID")
     res.redirect("/")
-  } else{
+  } else {
     res.redirect("/")
   }
 });
@@ -343,3 +361,11 @@ app.get("/logout", (req, res) => {
 //     }
 // })
 // console.log(Date.now())
+
+
+async function run() {
+  const data = await myModels.sellerDetail.where("pointer").equals("643aeb1a8e8a1c16a1bdeccc").populate("pointer");
+  console.log(data)
+}
+
+run()
