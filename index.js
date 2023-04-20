@@ -368,6 +368,18 @@ app.get("/seller/services", redirectUnLoggedSeller, (req, res) => {
   res.render("seller/services");
 });
 
+app.post('/seller/addService', (req, res) => {
+  let instance = {
+    title : req.body.title,
+    tag : req.body.tag,
+    charge : req.body.charge,
+    description : req.body.description,
+    ref : req.session.userID
+  }
+  console.log(instance)
+  res.redirect('/seller/services')
+})
+
 app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
   res.render("seller/reviews");
 });
