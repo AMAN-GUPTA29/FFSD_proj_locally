@@ -374,10 +374,18 @@ app.post('/seller/addService', (req, res) => {
     tag : req.body.tag,
     charge : req.body.charge,
     description : req.body.description,
-    ref : req.session.userID
+    pointer : req.session.userID
   }
   console.log(instance)
-  res.redirect('/seller/services')
+  myAPI.save(myModels.servicesModel, instance)
+  .then(doc => {
+    console.log(doc);
+    res.redirect('/seller/services')
+  })
+  .catch(err => {
+    console.log(err);
+    res.end("<h1>Some Error Occured<h1>")
+  })
 })
 
 app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
@@ -414,8 +422,9 @@ app.get("/logout", (req, res) => {
 
 
 async function run() {
-  const data = await myModels.customerDetail.where("pointer").equals("644171f166f6fa1ce2431931").populate("pointer");
+  const data = await myModels.servicesModel.where("pointer").equals("643aeb1a8e8a1c16a1bdeccc").populate("pointer");
   console.log(data)
+  console.log("Name : " , data[0].pointer.name)  
 }
 
 run()
