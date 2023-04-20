@@ -75,7 +75,30 @@ const customerDetail = mongoose.model('customerDetail', new mongoose.Schema({
     }
 }))
 
+const servicesModel = mongoose.model('services', new mongoose.Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    tag : {
+        type : String,
+        required : true
+    },
+    charge : {
+        type : Number
+    },
+    description : {
+        type : String,
+        required : true
+    },
+    pointer : {
+        type : mongoose.SchemaTypes.ObjectId,
+        ref : "seller"
+    }
+}))
+
 module.exports.customerModel = customerModel;
 module.exports.sellerModel = sellerModel;
 module.exports.sellerDetail = sellerDetail;
 module.exports.customerDetail = customerDetail;
+module.exports.servicesModel = servicesModel;

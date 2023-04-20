@@ -402,7 +402,7 @@ app.get("/logout", (req, res) => {
 
 
 async function run() {
-  const data = await myModels.sellerDetail.where("pointer").equals("643aeb1a8e8a1c16a1bdeccc").populate("pointer");
+  const data = await myModels.customerDetail.where("pointer").equals("644171f166f6fa1ce2431931").populate("pointer");
   console.log(data)
 }
 
