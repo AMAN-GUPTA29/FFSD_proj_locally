@@ -55,7 +55,7 @@ app.use(
     saveUninitialized: false,
     name: "sessionID",
     cookie: {
-      expires: 60000,
+      expires: 60000 * 10,    // 10 Minutes
     },
   })
 );
