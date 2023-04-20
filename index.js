@@ -122,6 +122,22 @@ app.get("/profile", redirectUnLoggedCustomer, (req, res) => {
   res.render("profile");
 });
 
+app.post('/xtraDetails', (req, res) => {
+  console.log(req.body);
+  // res.redirect('/customerView')
+  let instance = {
+    address : req.body.address,
+    pincode : req.body.pincode,
+    pointer : req.session.userID
+  }
+  myAPI.save(myModels.customerDetail, instance)
+  .then(doc => {
+    console.log(doc);
+    res.redirect("/customerView");
+  })
+  .catch(e => console.log(e))
+})
+
 app.post("/welcome", (req, res) => {
   // console.log(req.body)
   // var rrr = res;
@@ -148,9 +164,13 @@ app.post("/welcome", (req, res) => {
       req.session.userID = doc._id;
       req.session.customer = true;
       req.session.seller = false;
-      res.redirect("/customerView");
+      // res.redirect("/customerView");
+      res.render('extraDetails')
     })
-    .catch(res.send("<h1>Email already taken !!! </h1>"));
+    .catch(err => {
+      console.log(err);
+      res.send("<h1>Email already taken !!! </h1>")
+    });
 });
 
 app.post("/getin", (req, res) => {
@@ -188,6 +208,24 @@ app.post("/getin", (req, res) => {
       res.send("<h1>Either Id or Password or both are incorrect !!! </h1>");
     });
 });
+
+
+
+
+
+
+
+
+
+
+// Seller Starts
+
+
+
+
+
+
+
 
 // app.post('/seller/welcome', (req, res) => {
 //     // console.log(req.body)

@@ -12,19 +12,15 @@
 
 <body>
     <div class="container my-5">
-        <form action="/seller/xtraDetails" method="post">
+        <form action="/xtraDetails" method="post">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Aadhar Number</label>
-                <input name="aadhar" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" min="100000000000" max="999999999999" required>
+                <label for="exampleInputEmail1" class="form-label">Adderss</label>
+                <input name="address" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Phone Number</label>
-                <input name="phone" type="number" class="form-control" id="exampleInputPassword1" min="1000000000" max="9999999999" required>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword2" class="form-label">Address</label>
-                <input name="address" type="text" class="form-control" id="exampleInputPassword2" maxlength="100" required>
+                <label for="exampleInputPassword1" class="form-label">Pincode</label>
+                <input name="pincode" type="number" class="form-control" id="exampleInputPassword1" min="100000" max="999999" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

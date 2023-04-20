@@ -60,6 +60,22 @@ const sellerDetail = mongoose.model('sellerDetail', new mongoose.Schema({
     }
 }));
 
+const customerDetail = mongoose.model('customerDetail', new mongoose.Schema({
+    address : {
+        type : String,
+        required : true,
+    },
+    pincode : {
+        type : Number,
+        required : true
+    },
+    pointer : {
+        type : mongoose.SchemaTypes.ObjectId,
+        ref : "customer"
+    }
+}))
+
 module.exports.customerModel = customerModel;
 module.exports.sellerModel = sellerModel;
 module.exports.sellerDetail = sellerDetail;
+module.exports.customerDetail = customerDetail;
