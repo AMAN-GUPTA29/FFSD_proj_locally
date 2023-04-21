@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<style>
+  h1,h2,h3,.navbar-brand,.fs-1{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+</style>
+<body>
+    
+    <%- include('navbar') %>
+    <h1 class="text-center fw-bold my-5">CUSTOMERS</h1>
+    <table class="table table-hover border m-5 p-3">
+        <thead class="table">
+          <tr>
+            <th class="col">#</th>
+            <th class="col">Name</th>
+            <th class="col">Email</th>
+            <th class="col">Id</th>
+            <th class="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <% for(let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td class="row<%= i %>"><%= i+1 %></td>
+                    <td class="row<%= i %>"><%= data[i].name %> </td>
+                    <td class="row<%= i %>"><%= data[i].email %> </td>
+                    <td class="row<%= i %>"><%= data[i]._id %> </td>
+                    <td class="">
+                      <button type="button" class="btn btn-success row<%= i %> me-4" data-bs-toggle="modal" data-bs-target="#viewModalrow<%= i %>">View</button>
+                      <button type="button" class="btn btn-danger row<%= i %>" data-bs-toggle="modal" data-bs-target="#deleteModalrow<%= i %>">Delete</button>
+                    </td>
+                </tr>
+                <!-- View modal --> 
+                <div class="modal fade" id="viewModalrow<%= i %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">User Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Name: <%= data[i].name %></p>
+                        <p>Email: <%= data[i].email %></p>
+                        <p>Id: <%= data[i]._id %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Delete modal -->
+                <div class="modal fade" id="deleteModalrow<%= i %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Block User</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to block this user <%= data[i].name %>?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-danger">Yes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% } %>
+        </tbody>
+      </table>
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
