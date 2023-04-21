@@ -64,22 +64,27 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src=<%=data[i].src %>
-                                class="img-fluid rounded-start" alt=<%= data[i].alt %> >
+                                <img src=<%= image[i%2] %>
+                                class="img-fluid rounded-start" alt="Seller_Image" >
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Name : <%= data[i].name %>
+                                    <h5 class="card-title">Name : <%= data[i].title %>
                                     </h5>
-                                    <h5 class="card-title">Service : <%= data[i].service %>
+                                    <h5 class="card-title">Service : <%= data[i].tag %>
                                     </h5>
-                                    <h5 class="card-title">Charge : <%= data[i].fee %>
-                                    </h5>
+                                    <% if(data[i].charge) { %>
+                                        <h5 class="card-title">Charge : <%= data[i].charge %>
+                                        </h5>
+                                    <% } else { %>
+                                        <h5 class="card-title">Charge : Undiscloded
+                                        </h5>
+                                    <% } %>
                                     <p class="card-text mb-4">
                                         <%= data[i].description %>
                                     </p>
                                     <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                                    <h6><a href=<%=data[i].sellerProfile %> >Hire</a></h6>
+                                    <h6><a href="/customerView/display/<%= data[i]._id %>" >Hire</a></h6>
                                 </div>
                             </div>
                         </div>

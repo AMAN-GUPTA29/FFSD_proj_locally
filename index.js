@@ -115,7 +115,11 @@ const redirectUnLoggedCustomer = (req, res, next) => {
 
 app.get("/customerView", redirectUnLoggedCustomer, (req, res) => {
   // res.end("<h1>Login First</h1>")
-  res.render("customerView", cardDetails);
+  myModels.servicesModel.find({})
+    .then(doc => {
+      console.log(doc)
+      res.render("customerView", {data: doc, image: ["https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png", "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png"] });
+    })
 });
 
 app.get("/profile", redirectUnLoggedCustomer, (req, res) => {
@@ -126,16 +130,16 @@ app.post('/xtraDetails', (req, res) => {
   console.log(req.body);
   // res.redirect('/customerView')
   let instance = {
-    address : req.body.address,
-    pincode : req.body.pincode,
-    pointer : req.session.userID
+    address: req.body.address,
+    pincode: req.body.pincode,
+    pointer: req.session.userID
   }
   myAPI.save(myModels.customerDetail, instance)
-  .then(doc => {
-    console.log(doc);
-    res.redirect("/customerView");
-  })
-  .catch(e => console.log(e))
+    .then(doc => {
+      console.log(doc);
+      res.redirect("/customerView");
+    })
+    .catch(e => console.log(e))
 })
 
 app.post("/welcome", (req, res) => {
@@ -171,8 +175,8 @@ app.post("/welcome", (req, res) => {
       console.log(err);
       res.send("<h1>Email already taken !!! </h1>")
     });
-});
-
+  });
+  
 app.post("/getin", (req, res) => {
   // console.log(req.body)
   // let query = `select * from register where email='${req.body.email}' and password='${req.body.password}'`
@@ -180,35 +184,54 @@ app.post("/getin", (req, res) => {
   //     if(err){
   //         console.log(err)
   //     }else{
-  //         let count = 0;
+    //         let count = 0;
   //         rows.forEach(element => {
-  //             count++;
-  //         });
-  //         if(count == 0){
-  //             res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
-  //         }else{
-  //             res.redirect('/customerView')
-  //         }
+    //             count++;
+    //         });
+    //         if(count == 0){
+      //             res.send("<h1>Either Id or Password or both are incorrect !!! </h1>")
+      //         }else{
+        //             res.redirect('/customerView')
+        //         }
   //     }
   // })
   let email1 = req.body.email;
   let password1 = req.body.password;
-
+  
   myModels.customerModel
-    .find({ email: email1, password: password1 })
-    .then((data) => {
-      console.log(`ID = `, data[0]._id);
-      req.session.userID = data[0]._id;
-      req.session.customer = true;
-      req.session.seller = false;
-      res.redirect("/customerView");
-    })
-    .catch((err) => {
-      console.log(err.message);
-      res.send("<h1>Either Id or Password or both are incorrect !!! </h1>");
+  .find({ email: email1, password: password1 })
+  .then((data) => {
+    console.log(`ID = `, data[0]._id);
+    req.session.userID = data[0]._id;
+    req.session.customer = true;
+    req.session.seller = false;
+    res.redirect("/customerView");
+  })
+  .catch((err) => {
+    console.log(err.message);
+    res.send("<h1>Either Id or Password or both are incorrect !!! </h1>");
     });
 });
 
+app.get("/customerView/display", redirectUnLoggedCustomer, redirectUnLoggedCustomer, (req, res) => {
+  res.end("<h1>Invalid Action !!!</h1>")
+});
+
+app.get("/customerView/display/:ID", (req, res) => {
+  let id = req.params.ID;
+  myModels.servicesModel.where({_id : id}).populate('pointer')
+  .then(doc => console.log(doc))
+  .catch(err => console.log(err))
+  res.end(`<h1>${req.params}</h1>`)
+});
+
+app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
+  res.render("transaction");
+});
+
+app.get("/payment", redirectUnLoggedCustomer, (req, res) => {
+  res.render("payment");
+});
 
 
 
@@ -228,7 +251,7 @@ app.post("/getin", (req, res) => {
 
 
 // app.post('/seller/welcome', (req, res) => {
-//     // console.log(req.body)
+  //     // console.log(req.body)
 //     var rrr = res;
 //     let query = `insert into seller(id, name, email, password, loggedin) values(${Date.now()}, "${req.body.name}", "${req.body.email}", "${req.body.password}", 1)`
 //     db.run(query, (err) => {
@@ -255,17 +278,17 @@ app.post('/seller/xtraDetails', (req, res) => {
   console.log(req.body);
   // res.end("<h1>OK</h1>")
   let instance = {
-    aadhar : req.body.aadhar,
-    phone : req.body.phone,
-    address : req.body.address,
-    pointer : req.session.userID
+    aadhar: req.body.aadhar,
+    phone: req.body.phone,
+    address: req.body.address,
+    pointer: req.session.userID
   }
   myAPI.save(myModels.sellerDetail, instance)
-  .then(doc => {
-    console.log(doc.populate("pointer"));
-    res.redirect("/seller/sellerView");
-  })
-  .catch(e => console.log(e))
+    .then(doc => {
+      console.log(doc.populate("pointer"));
+      res.redirect("/seller/sellerView");
+    })
+    .catch(e => console.log(e))
 })
 
 app.post("/seller/welcome", (req, res) => {
@@ -328,17 +351,6 @@ app.post("/seller/getin", (req, res) => {
   // })
 });
 
-app.get("/customerView/display", redirectUnLoggedCustomer, (req, res) => {
-  res.render("display");
-});
-
-app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
-  res.render("transaction");
-});
-
-app.get("/payment", redirectUnLoggedCustomer, (req, res) => {
-  res.render("payment");
-});
 
 app.get("/chat", (req, res) => {
   // res.end(`<body style='background: green;'><h1 style='color: white;'> Chat </h1></body>`)
@@ -365,34 +377,34 @@ app.post("/seller/sellerView", redirectUnLoggedSeller, (req, res) => {
 });
 
 app.get("/seller/services", redirectUnLoggedSeller, (req, res) => {
-  myModels.servicesModel.find({pointer : req.session.userID})
-  .then(doc => {
-    res.render("seller/services", {data : doc});
-  })
-  .catch(err =>{
-    console.log(err);
-    res.send(err)
-  })
+  myModels.servicesModel.find({ pointer: req.session.userID })
+    .then(doc => {
+      res.render("seller/services", { data: doc });
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(err)
+    })
 });
 
 app.post('/seller/addService', (req, res) => {
   let instance = {
-    title : req.body.title,
-    tag : req.body.tag,
-    charge : req.body.charge,
-    description : req.body.description,
-    pointer : req.session.userID
+    title: req.body.title,
+    tag: req.body.tag,
+    charge: req.body.charge,
+    description: req.body.description,
+    pointer: req.session.userID
   }
   console.log(instance)
   myAPI.save(myModels.servicesModel, instance)
-  .then(doc => {
-    console.log(doc);
-    res.redirect('/seller/services')
-  })
-  .catch(err => {
-    console.log(err);
-    res.end("<h1>Some Error Occured<h1>")
-  })
+    .then(doc => {
+      console.log(doc);
+      res.redirect('/seller/services')
+    })
+    .catch(err => {
+      console.log(err);
+      res.end("<h1>Some Error Occured<h1>")
+    })
 })
 
 app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
@@ -431,7 +443,7 @@ app.get("/logout", (req, res) => {
 async function run() {
   const data = await myModels.servicesModel.where("pointer").equals("643aeb1a8e8a1c16a1bdeccc").populate("pointer");
   console.log(data)
-  console.log("Name : " , data[0].pointer.name)  
+  console.log("Name : ", data[0].pointer.name)
 }
 
 run()
