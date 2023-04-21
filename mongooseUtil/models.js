@@ -97,8 +97,26 @@ const servicesModel = mongoose.model('services', new mongoose.Schema({
     }
 }))
 
+const adminSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type: String,
+        required:true,
+        unique:true
+    },
+    password:{
+        type:String,
+        required:true
+    }
+})
+const adminModel = mongoose.model('admin',adminSchema)
+
 module.exports.customerModel = customerModel;
 module.exports.sellerModel = sellerModel;
 module.exports.sellerDetail = sellerDetail;
 module.exports.customerDetail = customerDetail;
 module.exports.servicesModel = servicesModel;
+module.exports.adminModel = adminModel;
