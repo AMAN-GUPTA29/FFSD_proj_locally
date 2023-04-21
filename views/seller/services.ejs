@@ -20,7 +20,8 @@
         .flx {
             display: flex;
         }
-        .flx-right{
+
+        .flx-right {
             margin-left: auto;
         }
     </style>
@@ -45,19 +46,28 @@
             </div> -->
 
             <div class="container">
-                <% for(let i=0; i < 3; i++) { %>
+                <% for(let i=0; i < data.length; i++) { %>
                     <div class="card text-bg-dark my-3">
                         <img src="/images/service_card_background.jpg" style="max-height: 200px;" class="card-img"
                             alt="hehe">
                         <div class="card-img-overlay">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional
-                                content. This content is a little bit longer.</p>
-                            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+                            <h5 class="card-title">
+                                <%= data[i].title %>
+                            </h5>
+                            <h6 class="card-title">
+                                <%= data[i].tag %>
+                            </h6>
+                            <p class="card-text">
+                                <%= data[i].description %>
+                            </p>
+                            <% if(data[i].charge) { %>
+                                <p class="card-text"><small>Price = <%= data[i].charge %></small></p>
+                            <% } else { %>
+                                <p class="card-text"><small>Price = Undisclosed</small></p>
+                            <% } %>
                         </div>
                     </div>
-                    <% } %>
+                <% } %>
 
             </div>
 

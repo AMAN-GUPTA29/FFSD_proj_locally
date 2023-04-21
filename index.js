@@ -365,7 +365,14 @@ app.post("/seller/sellerView", redirectUnLoggedSeller, (req, res) => {
 });
 
 app.get("/seller/services", redirectUnLoggedSeller, (req, res) => {
-  res.render("seller/services");
+  myModels.servicesModel.find({pointer : req.session.userID})
+  .then(doc => {
+    res.render("seller/services", {data : doc});
+  })
+  .catch(err =>{
+    console.log(err);
+    res.send(err)
+  })
 });
 
 app.post('/seller/addService', (req, res) => {
