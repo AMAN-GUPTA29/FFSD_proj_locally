@@ -272,9 +272,14 @@ app.get("/customerView/display/:ID", (req, res) => {
   myModels.servicesModel
     .where({ _id: id })
     .populate("pointer")
-    .then((doc) => console.log(doc))
-    .catch((err) => console.log(err));
-  res.end(`<h1>${req.params}</h1>`);
+    .then((doc) => {
+      res.render('display', doc[0])
+    })
+    .catch((err) => {
+      console.log(err)
+      res.end(`<h1>Some Error Occured !!!</h1>`);
+    });
+  
 });
 
 app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
@@ -675,3 +680,16 @@ app.get("/customer/delete/:ID", (req, res) => {
 
 
 
+
+
+
+
+
+
+// Between Seller and Consumer Interaction
+
+
+app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
+  let id = req.params.serviceID;
+  res.end(`<h1>Request for serviceId = ${id} recieved, Now we need to implement addidtion of data in appointent schema !!!</h1>`)
+})

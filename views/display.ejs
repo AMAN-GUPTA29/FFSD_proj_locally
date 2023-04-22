@@ -64,11 +64,11 @@
             <div class="container">
                 <div class="infos">
                     <h6 class="subtitle">Hello,I'm</h6>
-                    <h6 class="title">Mr. Ram</h6>
-                    <p>Electrician</p>
+                    <h6 class="title"><%= pointer.name %></h6>
+                    <p><%= tag %></p>
 
                     <div class="buttons pt-3">
-                        <a href="/payment"><button class="btn btn-primary rounded">HIRE
+                        <a href="/payment/<%= _id %>"> <button class="btn btn-primary rounded">HIRE
                                 ME</button></a>
 
                     </div>
@@ -112,11 +112,9 @@
                         <img src="/assets/imgs/avatar.jpg" alt="" class="img-thumbnail mb-4">
                     </div>
                     <div class="pl-md-4 col-md-9">
-                        <h6 class="title">Mr. Ram</h6>
-                        <p class="subtitle">Electrician</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, pariatur, aperiam aut
-                            autem voluptas odit. Odio ducimus delectus totam sed aliquam sequi praesentium mollitia,
-                            illum repudiandae quidem quod, magni magnam.</p>
+                        <h6 class="title"><%= pointer.name %></h6>
+                        <p class="subtitle"><%= tag %></p>
+                        <p><%= description %></p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium
                             qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non.
                             Laborum repellendus consequatur ullam voluptatum asperiores.</p>
