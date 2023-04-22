@@ -1,0 +1,3 @@
+const uri = "mongodb+srv://ffsd_1:ffsd_1@ffsd.m0j0grz.mongodb.net/FFSD?retryWrites=true&w=majority";
+
+module.exports = uri
