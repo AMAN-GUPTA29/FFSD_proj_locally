@@ -434,7 +434,15 @@ app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
 });
 
 app.get("/seller/profile", redirectUnLoggedSeller, (req, res) => {
-  res.render("seller/profile");
+
+   let id=req.session.userID;
+
+   myModels.sellerDetail.where("pointer").equals(id).populate("pointer").then((doc)=>{
+    console.log(doc);
+    res.render("seller/profile",doc[0]);
+   })
+
+  
 });
 
 app.get("/seller/transactions", redirectUnLoggedSeller, (req, res) => {
