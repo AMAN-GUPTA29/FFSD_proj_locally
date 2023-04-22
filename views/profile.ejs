@@ -20,7 +20,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    
+
     <style>
         .special {
             font-family: 'Anton', sans-serif;
@@ -30,7 +30,7 @@
             border-radius: 8px;
         }
 
-        .flex-right{
+        .flex-right {
             display: flex;
             margin-left: auto;
         }
@@ -64,65 +64,72 @@
 
     <%- include('navAfterLogin') %>
 
-    <div class="container"><h2># Profile</h2></div>
-    <div class="container mb-5 details p-5 bg-light curve-border">
-        <p>Name : <span class="special">Shay Patric</span></p>
-        <p>Place : <span class="special">Tada, Chittor, AndhraPradesh</span><input type="button" name="Edit"
-                value="Edit" class="mx-4" /></p>
-        <p>Pincode : <span class="special">123456</span><input type="button" name="Edit" value="Edit" class="mx-4" />
-        </p>
-    </div>
-    <div class="container">
-        <h2># Your Transactions</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Date/Time</th>
-                    <th scope="col">Rs</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><a href="https://upload.wikimedia.org/wikipedia/commons/6/60/Beautiful-pink-flower_-_West_Virginia_-_ForestWander.jpg"
-                            target="_blank">23123212312312</a></td>
-                    <td>14Feb23/10AM</td>
-                    <td>180.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
-                            target="_blank">37467123681723</a></td>
-                    <td>24Feb23/10AM</td>
-                    <td>1123.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
-                            target="_blank">37467123681723</a></td>
-                    <td>04Mar22/01PM</td>
-                    <td>115.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">......</th>
-                    <td>......</td>
-                    <td>......</td>
-                    <td>......</td>
-                </tr>
-            </tbody>
-        </table>
-        <div><a href="/transaction" target="_blank">See
-                more...</a></div>
-    </div>
+        <div class="container">
+            <h2># Profile</h2>
+        </div>
+        <div class="container mb-5 details p-5 bg-light curve-border">
+            <p>Name : <span class="special">
+                    <%= pointer.name %>
+                </span></p>
+            <p>Place : <span class="special">
+                    <%= address %>
+                </span><input type="button" name="Edit" value="Edit" class="mx-4" /></p>
+            <p>Pincode : <span class="special">
+                    <%= pincode %>
+                </span><input type="button" name="Edit" value="Edit" class="mx-4" />
+            </p>
+        </div>
+        <div class="container">
+            <h2># Your Transactions</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Rs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="https://upload.wikimedia.org/wikipedia/commons/6/60/Beautiful-pink-flower_-_West_Virginia_-_ForestWander.jpg"
+                                target="_blank">23123212312312</a></td>
+                        <td>14Feb23/10AM</td>
+                        <td>180.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
+                                target="_blank">37467123681723</a></td>
+                        <td>24Feb23/10AM</td>
+                        <td>1123.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
+                                target="_blank">37467123681723</a></td>
+                        <td>04Mar22/01PM</td>
+                        <td>115.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">......</th>
+                        <td>......</td>
+                        <td>......</td>
+                        <td>......</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div><a href="/transaction" target="_blank">See
+                    more...</a></div>
+        </div>
 
-    <!-- <%- include('footer_customer') %> -->
-    <%- include('footer-aman') %>
+        <!-- <%- include('footer_customer') %> -->
+        <%- include('footer-aman') %>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous"></script>
 </body>
 
 </html>
