@@ -58,10 +58,11 @@
 
 <body>
     <%- include('navAfterLogin') %>
+    <br>
 
         <div class="container mb-5  ">
             <input type="button" class="border-dark flex-left px-5 py-2 fltr mb-2" onclick="filter()" value="Filters">
-
+<br>
             <form class="hidden" id="form" action="/filter">
                 
                 
@@ -70,8 +71,10 @@
                     <option value="Auto-Rickshaw">Auto-Rickshaw</option>
        
                   </select>
+                  <br>
                   <input type="submit">
             </form>
+            <br>
             <div class="container-fluid">
 
                 <% for(let i=0; i < 10 && i < data.length; i++) { %>
