@@ -643,9 +643,14 @@ app.get("/seller/delete/:ID", (req, res) => {
     .then((doc) => {
       console.log(doc)
       myModels.servicesModel
-      .findOneAndDelete({pointer: id})
+      .deleteMany({pointer: id})
       .then((doc2)=>{
         console.log(doc2)
+      })
+      myModels.sellerDetail
+      .findOneAndDelete({pointer: id})
+      .then((doc3)=>{
+        console.log(doc3)
       })
     })
     .catch((err) => console.log(err));
@@ -667,4 +672,6 @@ app.get("/customer/delete/:ID", (req, res) => {
     .catch((err) => console.log(err));
   res.redirect('/viewcustomer')
 });
+
+
 
