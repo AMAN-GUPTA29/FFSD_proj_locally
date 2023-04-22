@@ -11,7 +11,6 @@ const myAPI = require("./mongooseUtil/api.js");
 const uri = require("./mongooseUtil/mongo_pass.js");
 const session = require("express-session");
 
-
 const PORT = 8000;
 
 const databasePath = path.join(__dirname, "data", "database.db");
@@ -57,7 +56,7 @@ app.use(
     saveUninitialized: false,
     name: "sessionID",
     cookie: {
-      expires: 60000 * 10,    // 10 Minutes
+      expires: 60000 * 10, // 10 Minutes
     },
   })
 );
@@ -121,32 +120,56 @@ const redirectUnLoggedCustomer = (req, res, next) => {
 
 app.get("/customerView", redirectUnLoggedCustomer, (req, res) => {
   // res.end("<h1>Login First</h1>")
-  myModels.servicesModel.find({})
-    .then(doc => {
-      console.log(doc)
-      res.render("customerView", { data: doc, image: ["https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png", "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png"] });
-    })
+  myModels.servicesModel.find({}).then((doc) => {
+    console.log(doc);
+    res.render("customerView", {
+      data: doc,
+      image: [
+        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png",
+        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png",
+      ],
+    });
+  });
 });
 
 app.get("/profile", redirectUnLoggedCustomer, (req, res) => {
-  res.render("profile");
+  let id = req.session.userID;
+  // myModels.customerModel
+  //   .where("_id")
+  //   .equals(id)
+  //   .then((doc) => {
+  //     console.log(doc);
+  //     res.render("profile", doc[0]);
+  //   });
+
+  myModels.customerDetail
+    .where("pointer")
+    .equals(id)
+    .populate("pointer")
+    .then((doc) => {
+      console.log("jgghjhjvvbjh");
+      console.log(doc);
+      res.render("profile", doc[0]);
+    })
+    .catch((err) => console.log(err));
 });
 
-app.post('/xtraDetails', (req, res) => {
+app.post("/xtraDetails", (req, res) => {
   console.log(req.body);
   // res.redirect('/customerView')
   let instance = {
     address: req.body.address,
     pincode: req.body.pincode,
-    pointer: req.session.userID
-  }
-  myAPI.save(myModels.customerDetail, instance)
-    .then(doc => {
+    pointer: req.session.userID,
+  };
+  myAPI
+    .save(myModels.customerDetail, instance)
+    .then((doc) => {
       console.log(doc);
       res.redirect("/customerView");
     })
-    .catch(e => console.log(e))
-})
+    .catch((e) => console.log(e));
+});
 
 app.post("/welcome", (req, res) => {
   // console.log(req.body)
@@ -176,11 +199,11 @@ app.post("/welcome", (req, res) => {
       req.session.seller = false;
       req.session.admin = false;
       // res.redirect("/customerView");
-      res.render('extraDetails')
+      res.render("extraDetails");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
-      res.send("<h1>Email already taken !!! </h1>")
+      res.send("<h1>Email already taken !!! </h1>");
     });
 });
 
@@ -222,15 +245,17 @@ app.post("/getin", (req, res) => {
 });
 
 app.get("/customerView/display", redirectUnLoggedCustomer, (req, res) => {
-  res.end("<h1>Invalid Action !!!</h1>")
+  res.end("<h1>Invalid Action !!!</h1>");
 });
 
 app.get("/customerView/display/:ID", (req, res) => {
   let id = req.params.ID;
-  myModels.servicesModel.where({ _id: id }).populate('pointer')
-    .then(doc => console.log(doc))
-    .catch(err => console.log(err))
-  res.end(`<h1>${req.params}</h1>`)
+  myModels.servicesModel
+    .where({ _id: id })
+    .populate("pointer")
+    .then((doc) => console.log(doc))
+    .catch((err) => console.log(err));
+  res.end(`<h1>${req.params}</h1>`);
 });
 
 app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
@@ -241,22 +266,7 @@ app.get("/payment", redirectUnLoggedCustomer, (req, res) => {
   res.render("payment");
 });
 
-
-
-
-
-
-
-
-
 // Seller Starts
-
-
-
-
-
-
-
 
 // app.post('/seller/welcome', (req, res) => {
 //     // console.log(req.body)
@@ -284,22 +294,23 @@ const redirectUnLoggedSeller = (req, res, next) => {
   }
 };
 
-app.post('/seller/xtraDetails', (req, res) => {
+app.post("/seller/xtraDetails", (req, res) => {
   console.log(req.body);
   // res.end("<h1>OK</h1>")
   let instance = {
     aadhar: req.body.aadhar,
     phone: req.body.phone,
     address: req.body.address,
-    pointer: req.session.userID
-  }
-  myAPI.save(myModels.sellerDetail, instance)
-    .then(doc => {
+    pointer: req.session.userID,
+  };
+  myAPI
+    .save(myModels.sellerDetail, instance)
+    .then((doc) => {
       console.log(doc.populate("pointer"));
       res.redirect("/seller/sellerView");
     })
-    .catch(e => console.log(e))
-})
+    .catch((e) => console.log(e));
+});
 
 app.post("/seller/welcome", (req, res) => {
   console.log(req.body);
@@ -310,13 +321,13 @@ app.post("/seller/welcome", (req, res) => {
   };
   myAPI
     .save(myModels.sellerModel, instance)
-    .then(doc => {
+    .then((doc) => {
       console.log(doc._id);
       req.session.userID = doc._id;
       req.session.customer = false;
       req.session.seller = true;
       // res.redirect("/seller/sellerView")
-      res.render('seller/extraDetails')
+      res.render("seller/extraDetails");
     })
     .catch((err) => {
       console.log(err);
@@ -361,7 +372,6 @@ app.post("/seller/getin", (req, res) => {
   // })
 });
 
-
 app.get("/chat", (req, res) => {
   // res.end(`<body style='background: green;'><h1 style='color: white;'> Chat </h1></body>`)
   res.render("utils/chat");
@@ -387,35 +397,37 @@ app.post("/seller/sellerView", redirectUnLoggedSeller, (req, res) => {
 });
 
 app.get("/seller/services", redirectUnLoggedSeller, (req, res) => {
-  myModels.servicesModel.find({ pointer: req.session.userID })
-    .then(doc => {
+  myModels.servicesModel
+    .find({ pointer: req.session.userID })
+    .then((doc) => {
       res.render("seller/services", { data: doc });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
-      res.send(err)
-    })
+      res.send(err);
+    });
 });
 
-app.post('/seller/addService', (req, res) => {
+app.post("/seller/addService", (req, res) => {
   let instance = {
     title: req.body.title,
     tag: req.body.tag,
     charge: req.body.charge,
     description: req.body.description,
-    pointer: req.session.userID
-  }
-  console.log(instance)
-  myAPI.save(myModels.servicesModel, instance)
-    .then(doc => {
+    pointer: req.session.userID,
+  };
+  console.log(instance);
+  myAPI
+    .save(myModels.servicesModel, instance)
+    .then((doc) => {
       console.log(doc);
-      res.redirect('/seller/services')
+      res.redirect("/seller/services");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
-      res.end("<h1>Some Error Occured<h1>")
-    })
-})
+      res.end("<h1>Some Error Occured<h1>");
+    });
+});
 
 app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
   res.render("seller/reviews");
@@ -431,10 +443,10 @@ app.get("/seller/transactions", redirectUnLoggedSeller, (req, res) => {
 
 app.get("/logout", (req, res) => {
   if (req.session.userID) {
-    res.clearCookie("sessionID")
-    res.redirect("/")
+    res.clearCookie("sessionID");
+    res.redirect("/");
   } else {
-    res.redirect("/")
+    res.redirect("/");
   }
 });
 
@@ -449,17 +461,7 @@ app.get("/logout", (req, res) => {
 // })
 // console.log(Date.now())
 
-
-
-
-
-
-
-
-
-
 // ADMIN SECTION
-
 
 const redirectUnLoggedAdmin = (req, res, next) => {
   if (!req.session.userID) {
@@ -473,105 +475,96 @@ const redirectUnLoggedAdmin = (req, res, next) => {
   }
 };
 
+app.get("/adminregister", redirectLogged, (req, res) => {
+  res.render("admin/adminregister");
+});
 
-app.get('/adminregister', redirectLogged, (req, res) => {
-  res.render("admin/adminregister")
-})
-
-app.post('/adminregister', (req, res) => {
-  console.log(req.body)
+app.post("/adminregister", (req, res) => {
+  console.log(req.body);
   instance = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password
-  }
+    password: req.body.password,
+  };
 
-  myAPI.save(myModels.adminModel, instance).then(doc => {
-    req.session.userID = doc[0]._id;
-    req.session.customer = false;
-    req.session.seller = false;
-    req.session.admin = true;
-    res.render('admin/adminLand')
-  })
-    .catch((err) => {
-      console.log(err)
-      res.send("<h1>Email is already taken!!</h1>")
+  myAPI
+    .save(myModels.adminModel, instance)
+    .then((doc) => {
+      req.session.userID = doc[0]._id;
+      req.session.customer = false;
+      req.session.seller = false;
+      req.session.admin = true;
+      res.render("admin/adminLand");
     })
-
-})
-
-app.get('/adminlogin', redirectLogged, (req, res) => {
-  res.render("admin/adminlogin")
-})
-
-app.post('/adminland', (req, res) => {
-  console.log(req.body)
-  let email1 = req.body.email
-  let password1 = req.body.password
-  myModels.adminModel.find({ email: email1, password: password1 }).then((data) => {
-    console.log(`id = `, data[0]._id)
-    req.session.userID = data[0]._id;
-    req.session.customer = false;
-    req.session.seller = false;
-    req.session.admin = true;
-    res.render('admin/adminLand')
-  })
     .catch((err) => {
-      console.log(err)
-      res.send("<h1> Either email or password is wrong!! </h1>")
+      console.log(err);
+      res.send("<h1>Email is already taken!!</h1>");
+    });
+});
+
+app.get("/adminlogin", redirectLogged, (req, res) => {
+  res.render("admin/adminlogin");
+});
+
+app.post("/adminland", (req, res) => {
+  console.log(req.body);
+  let email1 = req.body.email;
+  let password1 = req.body.password;
+  myModels.adminModel
+    .find({ email: email1, password: password1 })
+    .then((data) => {
+      console.log(`id = `, data[0]._id);
+      req.session.userID = data[0]._id;
+      req.session.customer = false;
+      req.session.seller = false;
+      req.session.admin = true;
+      res.render("admin/adminLand");
     })
+    .catch((err) => {
+      console.log(err);
+      res.send("<h1> Either email or password is wrong!! </h1>");
+    });
+});
+app.get("/adminLand", redirectUnLoggedAdmin, (req, res) => {
+  res.render("admin/adminLand");
+});
+app.get("/admincustomer", redirectUnLoggedAdmin, (req, res) => {
+  res.render("admin/admincustomer");
+});
+app.get("/adminseller", redirectUnLoggedAdmin, (req, res) => {
+  res.render("admin/adminseller");
+});
 
-
-})
-app.get('/adminLand', redirectUnLoggedAdmin, (req, res) => {
-  res.render("admin/adminLand")
-})
-app.get('/admincustomer', redirectUnLoggedAdmin, (req, res) => {
-  res.render("admin/admincustomer")
-})
-app.get('/adminseller', redirectUnLoggedAdmin, (req, res) => {
-  res.render("admin/adminseller")
-})
-
-app.get('/viewcustomer', redirectUnLoggedAdmin, (req, res) => {
-  myModels.customerModel.find().then((data1) => {
-    console.log(data1)
-    res.render("admin/viewcustomer", { data: data1 })
-  }).catch((err) => {
-    console.log(err)
-  })
-})
-app.get('/viewseller', redirectUnLoggedAdmin, (req, res) => {
-  myModels.sellerModel.find({}).then((data1) => {
-    console.log(data1)
-    res.render("admin/viewseller", { data: data1 })
-  }).catch((err) => {
-    console.log(err)
-  })
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.get("/viewcustomer", redirectUnLoggedAdmin, (req, res) => {
+  myModels.customerModel
+    .find()
+    .then((data1) => {
+      console.log(data1);
+      res.render("admin/viewcustomer", { data: data1 });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+app.get("/viewseller", redirectUnLoggedAdmin, (req, res) => {
+  myModels.sellerModel
+    .find({})
+    .then((data1) => {
+      console.log(data1);
+      res.render("admin/viewseller", { data: data1 });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 async function run() {
-  const data = await myModels.servicesModel.where("pointer").equals("643aeb1a8e8a1c16a1bdeccc").populate("pointer");
-  console.log(data)
-  console.log("Name : ", data[0].pointer.name)
+  const data = await myModels.servicesModel
+    .where("pointer")
+    .equals("643aeb1a8e8a1c16a1bdeccc")
+    .populate("pointer");
+  console.log(data);
+  console.log("Name : ", data[0].pointer.name);
 }
 
-run()
+// run();
