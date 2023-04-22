@@ -132,9 +132,9 @@ app.get("/customerView", redirectUnLoggedCustomer, (req, res) => {
   });
 });
 
-app.get("/filter",redirectUnLoggedCustomer,(req,res)=>{
+app.get("/filter", redirectUnLoggedCustomer, (req, res) => {
   console.log(req.query)
-  myModels.servicesModel.where("tag").equals(req.query.filter_details).then(doc=>{
+  myModels.servicesModel.where("tag").equals(req.query.filter_details).then(doc => {
     console.log(doc)
     res.render("customerView", {
       data: doc,
@@ -144,11 +144,11 @@ app.get("/filter",redirectUnLoggedCustomer,(req,res)=>{
       ],
     });
   })
-  .catch(e => {
-    console.log(e)
-    res.end("wrong")
-  })
-  
+    .catch(e => {
+      console.log(e)
+      res.end("wrong")
+    })
+
 })
 
 app.get("/profile", redirectUnLoggedCustomer, (req, res) => {
@@ -284,6 +284,29 @@ app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
 app.get("/payment", redirectUnLoggedCustomer, (req, res) => {
   res.render("payment");
 });
+
+app.get("/customerUpdate", redirectUnLoggedCustomer, (req, res) => {
+  console.log(req.query);
+
+  if (req.query.address) {
+    myModels.customerDetail
+      .updateOne(
+        { pointer: req.session.userID },
+        { $set: { address: req.query.address } }
+      )
+      .then(res.redirect("/profile"))
+      .catch((err) => res.end(err.message));
+  } else if (req.query.pincode) {
+    myModels.customerDetail
+      .updateOne(
+        { pointer: req.session.userID },
+        { $set: { pincode: req.query.pincode } }
+      )
+      .then(res.redirect("/profile"))
+      .catch((err) => res.end(err.message));
+  }
+});
+
 
 // Seller Starts
 
@@ -454,14 +477,14 @@ app.get("/seller/reviews", redirectUnLoggedSeller, (req, res) => {
 
 app.get("/seller/profile", redirectUnLoggedSeller, (req, res) => {
 
-   let id=req.session.userID;
+  let id = req.session.userID;
 
-   myModels.sellerDetail.where("pointer").equals(id).populate("pointer").then((doc)=>{
+  myModels.sellerDetail.where("pointer").equals(id).populate("pointer").then((doc) => {
     console.log(doc);
-    res.render("seller/profile",doc[0]);
-   })
+    res.render("seller/profile", doc[0]);
+  })
 
-  
+
 });
 
 app.get("/seller/transactions", redirectUnLoggedSeller, (req, res) => {
