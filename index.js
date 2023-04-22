@@ -633,3 +633,38 @@ async function run() {
 }
 
 // run();
+
+// ----DELETE----
+
+app.get("/seller/delete/:ID", (req, res) => {
+  let id = req.params.ID;
+  myModels.sellerModel
+    .findOneAndDelete({ _id: id })
+    .then((doc) => {
+      console.log(doc)
+      myModels.servicesModel
+      .findOneAndDelete({pointer: id})
+      .then((doc2)=>{
+        console.log(doc2)
+      })
+    })
+    .catch((err) => console.log(err));
+  res.redirect('/viewseller')
+});
+
+app.get("/customer/delete/:ID", (req, res) => {
+  let id = req.params.ID;
+  myModels.customerModel
+    .findOneAndDelete({ _id: id })
+    .then((doc) => {
+      console.log(doc)
+      myModels.customerDetail
+      .findOneAndDelete({pointer: id})
+      .then((doc2)=>{
+        console.log(doc2)
+      })
+    })
+    .catch((err) => console.log(err));
+  res.redirect('/viewcustomer')
+});
+
