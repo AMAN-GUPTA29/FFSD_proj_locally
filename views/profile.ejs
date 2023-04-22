@@ -34,6 +34,10 @@
             display: flex;
             margin-left: auto;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -73,11 +77,20 @@
                 </span></p>
             <p>Place : <span class="special">
                     <%= address %>
-                </span><input type="button" name="Edit" value="Edit" class="mx-4" /></p>
+                </span><input onclick="unhide_place1()" type="button" name="Edit" value="Edit" class="mx-4" /></p>
+            <form class="hidden" id="form1" action="/customerUpdate">
+                <input type="text" id="inp1" name="address" required>
+                <input type="submit">
+            </form>
             <p>Pincode : <span class="special">
                     <%= pincode %>
-                </span><input type="button" name="Edit" value="Edit" class="mx-4" />
+                </span><input onclick="unhide_place2()" type="button" name="Edit" value="Edit" class="mx-4" />
             </p>
+            <form class="hidden" id="form2" action="/customerUpdate">
+                <input type="number" id="inp2" name="address" required>
+                <input type="submit">
+            </form>
+
         </div>
         <div class="container">
             <h2># Your Transactions</h2>
@@ -130,6 +143,20 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
                 crossorigin="anonymous"></script>
+
+            <script>
+                function unhide_place1() {
+                    let palceForm = document.getElementById('form1')
+                    palceForm.classList.toggle('hidden')
+                }
+            </script>
+
+            <script>
+                function unhide_place2() {
+                    let palceForm = document.getElementById('form2')
+                    palceForm.classList.toggle('hidden')
+                }
+            </script>
 </body>
 
 </html>
