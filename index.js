@@ -450,6 +450,21 @@ app.get("/seller/services", redirectUnLoggedSeller, (req, res) => {
     });
 });
 
+
+
+app.get("/seller/sellerupdate", redirectUnLoggedSeller, (req, res) => {
+  console.log(req.query);
+
+  if (req.query.phone) {
+    myModels.sellerDetail.updateOne({ pointer: req.session.userID }, { $set: { phone: req.query.phone } })
+    .then(res.redirect("/seller/profile"))
+    .catch((err) => {
+      res.end(err.message)
+    });
+  }
+
+})
+
 app.post("/seller/addService", (req, res) => {
   let instance = {
     title: req.body.title,
