@@ -113,6 +113,36 @@ const adminSchema = new mongoose.Schema({
     }
 })
 const adminModel = mongoose.model('admin',adminSchema)
+const  requestSchema = new mongoose.Schema(
+    {
+        serviceid:{
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "services",
+            required: true
+        },
+        customerid:{
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "customer",
+            required: true
+        },
+        accepted:{
+            type: Boolean,
+            default : false,
+            required: true
+        },
+        sellerid:{
+            type:mongoose.SchemaTypes.ObjectId,
+            ref:"seller",
+            required:true
+            
+        },
+
+
+
+    }
+)
+const requestModel = mongoose.model('requests', requestSchema)
+
 
 module.exports.customerModel = customerModel;
 module.exports.sellerModel = sellerModel;
@@ -120,3 +150,4 @@ module.exports.sellerDetail = sellerDetail;
 module.exports.customerDetail = customerDetail;
 module.exports.servicesModel = servicesModel;
 module.exports.adminModel = adminModel;
+module.exports.requestModel = requestModel;
