@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        header{
+            margin-top: 20px;
+            background-color: #333;
+	        color: #fff;
+	        padding: 20px;
+        }
+        .card{
+            /* background-image: url("/images/service_card_background.jpg"); */
+            /* background-image: url("/images/plainbg.jpeg"); */
+            background: rgb(27,40,62);
+background: linear-gradient(90deg, rgba(27,40,62,1) 0%, rgba(115,142,172,1) 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+        }
+        .buttons{
+            margin: 0px 30%;
+        }
+        .reject{
+            /* background-color: rgb(233, 97, 84); */
+            border-radius: 10px;
+            margin-right: 10%;
+        }
+        .accept{
+            /* background-color: rgb(11, 11, 238); */
+            border-radius: 10px;
+            margin-left: 10%;
+        }
+        .accept:hover{
+            background-color: rgb(8, 153, 8);
+        }
+        .reject:hover{
+            background-color: rgb(227, 15, 33);
+        }
+        h2{
+            font-weight:800;
+            font-size: 60px;
+        }
+        
+    </style>
+</head>
+<body>
+    <%- include('navbar') %>
+    <header><h2 class="mx-5 text-tertiary">Service</h2> <h2 class="mx-5 text-info">Requests</h2></header>
+    <% for(let i=0;i< data.length;i++) { %>
+    <div class="d-flex flex-column justify-content-center align-items-center mx-5">
+        <div class="card col-12 d-flex flex-column justify-content-center m-3 p-4 px-5 border rounded-3">
+            <div class="d-flex"><h5>Customer Name :</h5><p class="fs-5">******</p></div>
+            <div class="d-flex"><h5>id:</h5><p class="fs-5"><%=  data[i].customerid %> </p></div>
+            <div class="d-flex"><h5>Requested Service :</h5><p class="fs-5"><%= data2[i].title %></p></div>
+            <div class="d-flex buttons"><button class="p-2 col-lg-4 col-md-5 reject">Reject</button><button class="col-4 col-md-5 accept">Accept</button> </div>
+        </div>
+    </div>
+    <% } %>
+    
+
+</body>
+</html>

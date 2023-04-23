@@ -279,7 +279,7 @@ app.get("/customerView/display/:ID", (req, res) => {
       console.log(err)
       res.end(`<h1>Some Error Occured !!!</h1>`);
     });
-  
+
 });
 
 app.get("/transaction", redirectUnLoggedCustomer, (req, res) => {
@@ -462,10 +462,10 @@ app.get("/seller/sellerupdate", redirectUnLoggedSeller, (req, res) => {
 
   if (req.query.phone) {
     myModels.sellerDetail.updateOne({ pointer: req.session.userID }, { $set: { phone: req.query.phone } })
-    .then(res.redirect("/seller/profile"))
-    .catch((err) => {
-      res.end(err.message)
-    });
+      .then(res.redirect("/seller/profile"))
+      .catch((err) => {
+        res.end(err.message)
+      });
   }
 
 })
@@ -648,15 +648,15 @@ app.get("/seller/delete/:ID", (req, res) => {
     .then((doc) => {
       console.log(doc)
       myModels.servicesModel
-      .deleteMany({pointer: id})
-      .then((doc2)=>{
-        console.log(doc2)
-      })
+        .deleteMany({ pointer: id })
+        .then((doc2) => {
+          console.log(doc2)
+        })
       myModels.sellerDetail
-      .findOneAndDelete({pointer: id})
-      .then((doc3)=>{
-        console.log(doc3)
-      })
+        .findOneAndDelete({ pointer: id })
+        .then((doc3) => {
+          console.log(doc3)
+        })
     })
     .catch((err) => console.log(err));
   res.redirect('/viewseller')
@@ -669,10 +669,10 @@ app.get("/customer/delete/:ID", (req, res) => {
     .then((doc) => {
       console.log(doc)
       myModels.customerDetail
-      .findOneAndDelete({pointer: id})
-      .then((doc2)=>{
-        console.log(doc2)
-      })
+        .findOneAndDelete({ pointer: id })
+        .then((doc2) => {
+          console.log(doc2)
+        })
     })
     .catch((err) => console.log(err));
   res.redirect('/viewcustomer')
@@ -690,6 +690,49 @@ app.get("/customer/delete/:ID", (req, res) => {
 
 
 app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
-  let id = req.params.serviceID;
-  res.end(`<h1>Request for serviceId = ${id} recieved, Now we need to implement addidtion of data in appointent schema !!!</h1>`)
+  let serviceid = req.params.serviceID;
+  let customerid = req.session.userID;
+  myModels.servicesModel.where("_id").equals(serviceid)
+  .then(doc => {
+    let seller_id = doc[0].pointer
+    console.log("-----------------------------------------------------")
+    console.log(seller_id)    
+    let instance = {
+    sellerid:  seller_id,
+     serviceid : serviceid,
+     customerid : customerid,
+     accepted : false
+    }
+    console.log(instance);
+    myAPI.save(myModels.requestModel , instance)
+    .then((field)=>
+    {
+      console.log(field);
+      res.end(`<h1>Request has been generated for serviceid =${serviceid} and  </h1>`)
+    })
+    .catch((err)=>
+    {
+      console.log(err);
+      res.end("<h2>an error has occurred</h2>")
+    })
+  })
+
+})
+//   res.end(`<h1>Request for serviceId = ${serviceid} recieved, request generated</h1>`)
+// })
+
+app.get("/seller/request" , redirectUnLoggedSeller,  (req,res)=>{
+  myModels.requestModel.where("sellerid").equals(req.session.userID)
+  .then(data => {
+    console.log(data)
+    myModels.servicesModel
+    .find({ _id: data[0].serviceid })
+    .then((data2) => {
+      // console.log(data2.title)
+      console.log(data2)
+      res.render('seller/myrequests', {data,data2})
+    })
+   
+  })
+  .catch(err => console.log(err))
 })
