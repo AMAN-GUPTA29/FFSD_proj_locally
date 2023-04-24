@@ -695,7 +695,7 @@ app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
   myModels.servicesModel.where("_id").equals(serviceid)
   .then(doc => {
     let seller_id = doc[0].pointer
-    console.log("-----------------------------------------------------")
+    console.log("--------------------------------Hired---------------------------------")
     console.log(seller_id)    
     let instance = {
     sellerid:  seller_id,
@@ -721,18 +721,70 @@ app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
 //   res.end(`<h1>Request for serviceId = ${serviceid} recieved, request generated</h1>`)
 // })
 
-app.get("/seller/request" , redirectUnLoggedSeller,  (req,res)=>{
-  myModels.requestModel.where("sellerid").equals(req.session.userID)
-  .then(data => {
-    console.log(data)
-    myModels.servicesModel
-    .find({ _id: data[0].serviceid })
-    .then((data2) => {
-      // console.log(data2.title)
-      console.log(data2)
-      res.render('seller/myrequests', {data,data2})
-    })
-   
-  })
-  .catch(err => console.log(err))
+app.get("/seller/request", redirectUnLoggedSeller, async (req, res) => {
+  try {
+    const data = await myModels.requestModel
+      .where("sellerid")
+      .equals(req.session.userID)
+      .exec();
+      let final = ""
+      const data2 = await Promise.all(data.map(async (obj) => {
+        const result = await myModels.servicesModel
+          .find({ _id: obj.serviceid })
+          .exec();
+        return result[0]; // Assuming only one object is returned
+      }));
+      
+      const data3 = await Promise.all(data.map(async (obj) => {
+        const result = await myModels.customerModel
+          .find({ _id: obj.customerid })
+          .exec();
+          return result[0];
+      }));    
+      // console.log("--------------------------------data---------------------------------")
+      // console.log(data);
+      // console.log(data2);
+      // console.log(data3);
+      const result = [];
+    for (let i = 0; i < data.length; i++) {
+     result.push({ id:data[i]._id,customer: data3[i].name,email: data3[i].email,service: data2[i].tag,price:data2[i].charge,accepted:data[i].accepted });
+    }
+    console.log(result)
+    res.render('seller/myrequests',{result})
+    // res.end("<h1>Fix the bug</h1>")
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get('/seller/accepted/:state/:id',(req,res)=>{
+  const state = req.params.state
+  const id = req.params.id
+  console.log(state)
+  // res.end(`<h1>${state} , ${id}</h1>`)
+    myModels.requestModel.find({_id:id}).then((data)=>{
+      data[0].accepted = state
+      data[0].save();
+      res.redirect('/seller/request')
+    })  
 })
+
+app.get('/seller/rejected/:state/:id',(req,res)=>{
+  const state = req.params.state
+  const id = req.params.id
+  console.log(state)
+  // res.end(`<h1>${state} , ${id}</h1>`)
+  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc)=>{
+          console.log(`deleted :${doc}`)
+          res.redirect('/seller/request')
+        })
+})
+
+async function deleting() {
+  const data = await myModels.requestModel
+  .deleteMany()
+  .then((doc) => {
+    console.log(doc)
+  })
+}
+// deleting()

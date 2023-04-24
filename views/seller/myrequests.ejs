@@ -26,12 +26,12 @@ background: linear-gradient(90deg, rgba(27,40,62,1) 0%, rgba(115,142,172,1) 100%
             margin: 0px 30%;
         }
         .reject{
-            /* background-color: rgb(233, 97, 84); */
+            background-color: rgb(33, 32, 32);
             border-radius: 10px;
             margin-right: 10%;
         }
         .accept{
-            /* background-color: rgb(11, 11, 238); */
+            background-color: rgb(33, 32, 32);
             border-radius: 10px;
             margin-left: 10%;
         }
@@ -45,22 +45,64 @@ background: linear-gradient(90deg, rgba(27,40,62,1) 0%, rgba(115,142,172,1) 100%
             font-weight:800;
             font-size: 60px;
         }
+        .accepted-card{
+            background: rgb(27,40,62);
+background: linear-gradient(90deg, rgba(27,40,62,1) 0%, rgba(20,125,32,1) 100%);
+color: white;
+        }
+        .after-accepted-accept{
+            background-color: green;
+            border-radius: 10px;
+            margin-right:10%;
+        }
+        .after-accepted-reject{
+            border-radius: 10px;
+            margin-right:10%;
+        }
         
     </style>
 </head>
 <body>
     <%- include('navbar') %>
     <header><h2 class="mx-5 text-tertiary">Service</h2> <h2 class="mx-5 text-info">Requests</h2></header>
-    <% for(let i=0;i< data.length;i++) { %>
+    <% if(result) { %>
+    <% for(let i=0;i< result.length;i++) { %>
+        <% if(!result[i].accepted) { %>
     <div class="d-flex flex-column justify-content-center align-items-center mx-5">
         <div class="card col-12 d-flex flex-column justify-content-center m-3 p-4 px-5 border rounded-3">
-            <div class="d-flex"><h5>Customer Name :</h5><p class="fs-5">******</p></div>
-            <div class="d-flex"><h5>id:</h5><p class="fs-5"><%=  data[i].customerid %> </p></div>
-            <div class="d-flex"><h5>Requested Service :</h5><p class="fs-5"><%= data2[i].title %></p></div>
-            <div class="d-flex buttons"><button class="p-2 col-lg-4 col-md-5 reject">Reject</button><button class="col-4 col-md-5 accept">Accept</button> </div>
+            <div class="d-flex"><h5>Customer Name :</h5><p class="fs-5"><%=  result[i].customer %></p></div>
+            <div class="d-flex"><h5>Customer Email :</h5><p class="fs-5"><%=  result[i].email %></p></div>
+            <div class="d-flex"><h5>Requested Service :</h5><p class="fs-5"><%= result[i].service %></p></div>
+            <div class="d-flex"><h5>Price :</h5><p class="fs-5"><%= result[i].price %></p></div>
+            
+            <div class="d-flex buttons">
+                <a href="/seller/rejected/<%= result[i].accepted %>/<%= result[i].id %>" class="border p-2 px-5 reject text-decoration-none text-white">Reject</a>
+                <a href="/seller/accepted/<%= !result[i].accepted %>/<%= result[i].id %>" class="border p-2 px-5 accept text-decoration-none text-white">accept</a>
+                <!-- <a href="" class="col-lg-4 col-md-5 accept"><button class="p-2">Accept</button></a> -->
+             </div>
+             <% }else{ %>
+                <div class="d-flex flex-column justify-content-center align-items-center mx-5">
+                    <div class="accepted-card col-12 d-flex flex-column justify-content-center m-3 p-4 px-5 border rounded-3">
+                        <div class="d-flex"><h5>Customer Name :</h5><p class="fs-5"><%=  result[i].customer %></p></div>
+                        <div class="d-flex"><h5>Customer Email :</h5><p class="fs-5"><%=  result[i].email %></p></div>
+                        <div class="d-flex"><h5>Requested Service :</h5><p class="fs-5"><%= result[i].service %></p></div>
+                        <div class="d-flex"><h5>Price :</h5><p class="fs-5"><%= result[i].price %></p></div>
+                        
+                <div class="d-flex buttons">
+                    <a href="/seller/rejected/<%= result[i].accepted %>/<%= result[i].id %>" class="after-accepted-reject border p-2 px-5 reject text-decoration-none text-white">Reject</a>
+                    <a href="" class="after-accepted-accept border p-2 px-5 ccepted text-decoration-none text-white">accepted</a>
+                 </div>
+                 <% } %>
+                </div>
         </div>
     </div>
     <% } %>
+    <% }else{ %>
+        <h1 class="m-3 text-center">Empty</h1>
+        <h1 class="m-3 No Requests From any User">Empty</h1>
+        <% } %>
+
+
     
 
 </body>
