@@ -816,3 +816,100 @@ async function deleting() {
   })
 }
 // deleting()
+
+
+app.get('/completed/:reqID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
+  let {reqID, sellerID} = req.params
+  let customerID = req.session.userID;
+
+  console.log(reqID, sellerID, customerID)
+
+  myModels.requestModel.deleteOne({_id : reqID})
+  .then(() => {
+    let instance = {
+      customerID : customerID,
+      sellerID : sellerID
+    }
+    myAPI.save(myModels.historyModel, instance)
+    .then(() => {
+      res.redirect('/history')
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })    
+  })
+})
+
+app.get('/history', redirectUnLoggedCustomer, (req, res) => {
+  myModels.historyModel.where('customerID').equals(req.session.userID).populate('sellerID')
+  .then(doc => {
+    res.render('history', {data : doc})
+  })
+  .catch(err => {
+    console.log(err.message)
+    res.end("<h1>Some error Occured</h1>")
+  })
+})
+
+app.get('/like/:histID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
+  let {histID, sellerID} = req.params;
+  myModels.historyModel.findOneAndDelete({_id : histID})
+  .then(() => {
+    myModels.sellerDetail.where('pointer').equals(sellerID)
+    .then((doc) => {
+      let likes = doc[0].like;
+      console.log(likes)
+      likes += 1;
+      myModels.sellerDetail
+      .updateOne(
+        { pointer: sellerID },
+        { $set: { like : likes } }
+      )
+      .then(() => res.redirect('/customerView'))
+      .catch(err => {
+        console.log(err.message)
+        res.end("<h1>Some error Occured</h1>")
+      })
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
+  })
+  .catch(err => {
+    console.log(err.message)
+    res.end("<h1>Some error Occured</h1>")
+  })
+})
+
+app.get('/dislike/:histID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
+  let {histID, sellerID} = req.params;
+  myModels.historyModel.findOneAndDelete({_id : histID})
+  .then(() => {
+    myModels.sellerDetail.where('pointer').equals(sellerID)
+    .then((doc) => {
+      let dislikes = doc[0].dislike;
+      console.log(dislikes)
+      dislikes += 1;
+      myModels.sellerDetail
+      .updateOne(
+        { pointer: sellerID },
+        { $set: { dislike : dislikes } }
+      )
+      .then(() => res.redirect('/customerView'))
+      .catch(err => {
+        console.log(err.message)
+        res.end("<h1>Some error Occured</h1>")
+      })
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
+  })
+  .catch(err => {
+    console.log(err.message)
+    res.end("<h1>Some error Occured</h1>")
+  })
+})

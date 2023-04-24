@@ -57,6 +57,14 @@ const sellerDetail = mongoose.model('sellerDetail', new mongoose.Schema({
     pointer : {
         type : mongoose.SchemaTypes.ObjectId,
         ref : "seller"
+    },
+    like : {
+        type : Number,
+        default : 0
+    },
+    dislike : {
+        type : Number,
+        default : 0
     }
 }));
 
@@ -136,12 +144,32 @@ const  requestSchema = new mongoose.Schema(
             required:true
             
         },
-
-
-
     }
 )
 const requestModel = mongoose.model('requests', requestSchema)
+
+
+
+
+const  historySchema = new  mongoose.Schema({
+    customerID : {
+        type : mongoose.SchemaTypes.ObjectId,
+        ref : 'customer'
+    },
+    sellerID : {
+        type : mongoose.SchemaTypes.ObjectId,
+        ref : 'seller'
+    }
+})
+const historyModel = mongoose.model('history', historySchema)
+
+const  broadcastSchema = new  mongoose.Schema({
+    message : {
+        type : String,
+        required : true
+    }
+})
+const broadcastModel = mongoose.model('history', broadcastSchema)
 
 
 module.exports.customerModel = customerModel;
@@ -151,3 +179,5 @@ module.exports.customerDetail = customerDetail;
 module.exports.servicesModel = servicesModel;
 module.exports.adminModel = adminModel;
 module.exports.requestModel = requestModel;
+module.exports.historyModel = historyModel;
+module.exports.broadcastModel = broadcastModel
