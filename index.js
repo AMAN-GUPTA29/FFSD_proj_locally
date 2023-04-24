@@ -708,7 +708,8 @@ app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
     .then((field)=>
     {
       console.log(field);
-      res.end(`<h1>Request has been generated for serviceid =${serviceid} and  </h1>`)
+      // res.end(`<h1>Request has been generated for serviceid =${serviceid} and  </h1>`)
+      res.redirect('/customerrequest')
     })
     .catch((err)=>
     {
@@ -778,6 +779,33 @@ app.get('/seller/rejected/:state/:id',(req,res)=>{
           console.log(`deleted :${doc}`)
           res.redirect('/seller/request')
         })
+})
+
+app.get('/customer/rejected/:state/:id',(req,res)=>{
+  const state = req.params.state
+  const id = req.params.id
+  console.log(state)
+  // res.end(`<h1>${state} , ${id}</h1>`)
+  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc)=>{
+          console.log(`deleted :${doc}`)
+          res.redirect('/customerrequest')
+        })
+})
+
+app.get("/customerrequest" , redirectUnLoggedCustomer, (req,res)=>
+{
+  myModels.requestModel.where("customerid").equals(req.session.userID).populate("serviceid")
+  .then((data)=> {
+    console.log(data)
+    res.render('customerrequest' , {data:data})
+
+
+  })
+  .catch(err => {
+    console.log(err)
+    res.end("<h1> Some error happened </h1>")
+  })
+
 })
 
 async function deleting() {
