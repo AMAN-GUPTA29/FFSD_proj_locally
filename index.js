@@ -607,10 +607,15 @@ app.get("/adminseller", redirectUnLoggedAdmin, (req, res) => {
 
 app.get("/viewcustomer", redirectUnLoggedAdmin, (req, res) => {
   myModels.customerModel
-    .find()
-    .then((data1) => {
-      console.log(data1);
-      res.render("admin/viewcustomer", { data: data1 });
+    .find({})
+    .then((data) => {
+      console.log(data);
+      myModels.customerDetail
+      .find({})
+      .then((data2)=>{
+        console.log(data2[0]);
+        res.render("admin/viewcustomer", {data,data2});
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -619,9 +624,14 @@ app.get("/viewcustomer", redirectUnLoggedAdmin, (req, res) => {
 app.get("/viewseller", redirectUnLoggedAdmin, (req, res) => {
   myModels.sellerModel
     .find({})
-    .then((data1) => {
-      console.log(data1);
-      res.render("admin/viewseller", { data: data1 });
+    .then((data) => {
+      console.log(data);
+      myModels.sellerDetail
+      .find({})
+      .then((data2)=>{
+        console.log(data2);
+        res.render("admin/viewseller", {data,data2});
+      })
     })
     .catch((err) => {
       console.log(err);
@@ -912,4 +922,30 @@ app.get('/dislike/:histID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
     console.log(err.message)
     res.end("<h1>Some error Occured</h1>")
   })
+})
+
+app.get('/admin/broadcast',(req,res)=>{
+  res.render('admin/broadcast')
+})
+
+app.get('/admin/pastbroadcast',(req,res)=>{
+  myModels.broadcastModel.find().then((data)=>{
+    res.render('admin/pastbroadcast',{data})
+  })
+})
+
+app.post('/sendmsg',(req,res)=>{
+  let instance = {
+    message: req.body.message,
+  };
+
+  myAPI
+    .save(myModels.broadcastModel , instance)
+    .then((doc) => {
+      console.log(doc.message);
+      res.redirect('/admin/pastbroadcast')
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 })

@@ -5,53 +5,213 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Righteous&family=Sigmar&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        h1,h2,h3,.navbar-brand,.fs-1{
+        h1,h2,.navbar-brand,.fs-1{
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
+
+        .Stastics{
+            font-size: 35px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+            padding: 10px;
+            color: white;
+            min-height: 150px;
+            background-color: rgb(32, 110, 212);
+            overflow: hidden;
+        }
+        .dailyStastics{
+            font-weight:800;
+            font-size: 30px;
+            color: #333;
+        }
+        .buttons{
+            margin-top: -70px;
+        }
+        .content{
+            box-shadow: 0 0rem 1rem rgba(119, 111, 111, 0.3);
+        }
+        .content2{
+            box-shadow: 0 0rem 1rem rgba(119, 111, 111, 0.3);
+        }
+        @keyframes zoom-in {
+            0% {
+             transform: scale(1, 1);
+            }
+            100% {
+             transform: scale(1.02, 1.02);
+            }
+        }
+        .content:hover,.content2:hover{
+            box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.3);
+            animation: zoom-in 0.6s forwards;
+        }
+        .link:hover{
+            box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.3);
+            animation: zoom-in 0.6s forwards;
+        }
+        .btn {
+        display: inline-block;
+        padding: 20px 40px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      }
+
+      .btn:hover {
+        background-color: #0069d9;
+        box-shadow: 0 0rem 1rem rgba(200, 187, 187, 0.564);
+        box-shadow: 0 0rem 3rem rgba(255, 255, 255, 0.733);
+        animation: zoom-in 0.6s forwards;
+      }
+
+      .btn i {
+        margin-right: 5px;
+      }
+
+      .btn-users {
+        background-color: #dc3545;
+      }
+
+      .btn-traffic {
+        background-color: #17a2b8;
+      }
+
+      .btn-revenue {
+        background-color: #ffc107;
+      }
+
+      .btn-tools {
+        background-color: #28a745;
+      }
+
+      .btn-messages {
+        background-color: #007bff;
+      }
+      .bs-cards{
+        width: fit-content;
+block-size: fit-content; 
+      }
+      .bs-cards:hover,.manage:hover,.welcome:hover{
+        animation: zoom-in 0.6s forwards;
+      }
+      .matter{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 18px;
+      }
+      
+
+     
 
     </style>
 </head>
 <body>
     <%- include('navbar') %>
-
-    <div class="d-flex justify-content-around m-3 p-4">
-        <div class="border rounded-3 p-4 text-center bg-info">52.13 Visitiors</div>
-        <div class="border rounded-3 p-4 text-center bg-success">$ 25 Earnings</div>
-        <div class="border rounded-3 p-4 text-center bg-success-subtle">$ 126.34 Revenue</div>
-        <div class="border rounded-3 p-4 text-center bg-primary">30 Service providers</div>
-        <div class="border rounded-3 p-4 text-center bg-primary-subtle">5 Types of services</div>
-        <div class="border rounded-3 p-4 text-center bg-dark-subtle">3 New Users</div>
-        <div class="border rounded-3 p-4 text-center bg-secondary">7 Bug Reports</div>
-        <div class="border rounded-3 p-4 text-center bg-warning">4 Referals</div>
+    <div class="welcome mx-5 px-2 mt-3">
+        <h1>Welcome</h1>
+        <h1 class="mx-5 px-3">Mr.Admin</h1>
     </div>
 
-    <div class="row justify-content-center mx-5 my-3">
-        <div class="col-4 border m-5 p-3 d-flex flex-column">
-            <h3 class="">Daily Stastics</h3>
-            <div class="">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, aperiam.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, voluptates delectus! Expedita qui nemo nulla ipsam? Id consequuntur natus voluptas neque, deserunt repellat ratione fuga.
+    <div class="row justify-content-center mb-3 mt-1">
+        <div class="content rounded-3 col-5 border my-4 mx-3 p-2 d-flex flex-column">
+            <header class="ps-3">
+                <h3 class="dailyStastics">Daily</h3>
+            <h3 class="dailyStastics ps-2">Stastics</h3>
+            </header>
+            <div class="matter">
+                <p class="">
+                    The statistics of the webpage show a steady increase in usage and user engagement over time. In the past year, the website has seen a 25% increase in overall traffic, with a significant portion of new visitors coming from social media channels.
+                </p>
+                <p class="">
+                    Users are spending an average of 3 minutes and 30 seconds on the website, indicating a high level of engagement and interest in the content. The bounce rate has also decreased by 15%, suggesting that users are finding the website's content relevant and engaging.
+                </p>
+                <!-- <p>
+                    The majority of traffic is coming from mobile devices, with 60% of users accessing the website via smartphones or tablets. This highlights the importance of mobile optimization and responsive design in providing a positive user experience.
+                </p> -->
             </div>
         </div>
-        <div class="col-6 d-flex flex-column justify-content-center p-4">
-            <div class="row m-2">
-                <button class="col-3 rounded-3 m-4 p-4">Notifications (2)</button>
-                <button class="col-3 rounded-3 m-4 p-4">Button2</button>
+        <div class="content2 col-5 my-4 mx-3 d-flex flex-column justify-content-center border rounded-3">
+            <div class="row Stastics rounded-3"><div class="col">Stastics</div> </div>
+            <div class="row buttons">
+                <div class="row m-2">
+                    <a href="admincustomer" class="link col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">85 customers</a>
+                    <a href="adminseller" class="link col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">20 Workers</a>
+                    <a href="" class="link col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">3 Types Services</a>
+                </div>
+                <div class="row m-2 text-center">
+                    <a href="" class="link col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">53 Visitiors</a>
+                    <a href="" class="link col-3 py-4 p-3 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">$23 Earnings</a>
+                </div>
             </div>
-            <div class="row m-2">
-                <button class="col-3 rounded-3 m-4 p-4">Button3</button>
-                <button class="col-3 rounded-3 m-4 p-4">Button4</button>
-            </div>
+            
         </div>        
     </div>
-
-    <h2 class="m-4">Manage Your Subcribers</h2>
-    <div class="row justify-content-around m-4">
-        <div class="col-5 text-center bg-danger border rounded-3 m-3 p-5"> <a href="admincustomer" class="text-decoration-none text-white fs-1">85 Customer</a></div>
-        <div class="col-5 text-center bg-primary border rounded-3 m-3 p-5"> <a href="adminseller" class="text-decoration-none text-white fs-1">20 Service providers</a></div>
+    <div class="bg-dark p-3 my-2 mx-5 rounded-3 manage">
+        <h2 class="m-2 text-white pb-4">Manage Your Subcribers</h2>
+    <div class="row justify-content-center">
+        <a href="admincustomer" class="bs-cards text-decoration-none text-black mx-5 mb-3">
+            <div class="card" style="width: 21rem;">
+                <img src="/images/customer.jpg" class="card-img-top" alt="..." height="300px" width="500px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">CUSTOMERS</h5>
+                </div>
+            </div>
+        </a>
+        <a href="adminseller" class="bs-cards text-decoration-none text-black mx-5 mb-3">
+            <div class="card" style="width: 21rem;">
+                <img src="/images/serviceprovider3.jpg" class="card-img-top" alt="..." height="300px" width="500px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Workers</h5>
+                </div>
+            </div>
+        </a>
     </div>
+    </div>
+    <div class="d-flex justify-content-center py-5">
+        <div class="px-2">
+            <a href="#" class="btn btn-users">
+              <i class="fas fa-users"></i>
+              Users
+            </a>
+          </div>
+          <div class="px-2">
+            <a href="#" class="btn btn-traffic">
+              <i class="fas fa-chart-line"></i>
+              Traffic
+            </a>
+          </div>
+          <div class="px-2">
+            <a href="#" class="btn btn-revenue">
+              <i class="fas fa-dollar-sign"></i>
+              Revenue
+            </a>
+          </div>
+          <div class="px-2">
+            <a href="#" class="btn btn-tools">
+            <i class="fas fa-tools"></i>
+                Services
+            </a>
+          </div>
+          <div class="px-2">
+            <a href="#" class="btn btn-messages">
+              <i class="fas fa-envelope"></i>
+              Messages
+            </a>
+          </div>
+    </div>
+    
+    
 
     <h2 class="m-4">Best Service providers</h2>
     <div class="d-flex justify-content-evenly">
@@ -61,27 +221,6 @@
         <div class="border rounded-3 m-2 p-4"><img src="" alt="image"> Varun | rating 4.9</div>
         <div class="border rounded-3 m-2 p-4"><img src="" alt="image"> Krishna | rating 4.5</div>
         <div class="border rounded-3 m-2 p-4"><img src="" alt="image"> Chaitanya | rating 4.3</div>         
-    </div>
-
-    <div class="row justify-content-center m-2">
-        <div class="col-3 border rounded-3 d-flex flex-column m-3">
-            <h3 class="m-2">Inbox</h3>
-            <div class=""><img src="" alt="image"> Varun | I didn't reciev....</div><br>
-            <div class=""><img src="" alt="image"> Krishna | I was getting prob...</div><br>
-            <div class=""><img src="" alt="image"> Chaitanya | Can you increase the...</div><br>
-        </div>
-        <div class="col-5 border rounded-3 d-flex flex-column m-3">
-            <h3 class="m-2">Daily Feedback</h3>
-            <div class=""><img src="" alt="image"> Chaitanya | It was nice</div><br>
-            <div class=""><img src="" alt="image"> Varun | You have to impro..</div><br>
-            <div class=""><img src="" alt="image"> Krishna | It is ok that ...</div><br>
-        </div>
-        <div class="col-3 border rounded-3 d-flex flex-column m-3">
-            <h3 class="m-2">Send messages to</h3>
-            <div class=""><img src="" alt="image"> Consumers</div><hr>
-            <div class=""><img src="" alt="image"> Service Providers</div><hr>
-            <div class=""><img src="" alt="image"> For both</div><hr>
-        </div>
     </div>
 
     <div class="d-flex justify-content-evenly m-4 p-3">
@@ -108,13 +247,6 @@
                 <div class="col">278 Worked</div>                
             </div>            
         </div>
-    </div>
-
-    <h2 class="m-4">Provide Insurances / Offers / Cashback / Bonuses</h2>
-    <div class="row justify-content-evenly m-4">
-        <div href="" class="col-3 border rounded-3 m-3 p-4"><div class=""> Insurance Service Providers</div></div>
-        <div href="" class="col-3 border rounded-3 m-3 p-4"><div class=""> Offers to Service Providers</div></div>
-        <div href="" class="col-3 border rounded-3 m-3 p-4"><div class=""> Offers to Consumers</div></div>
     </div>
 
     <h1 class="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Increase New Services To Provide</h1>

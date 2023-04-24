@@ -1,18 +1,35 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Righteous&family=Sigmar&display=swap" rel="stylesheet">
+<style>
+  .locally{
+    font-size: 25px;
+    font-family: 'Black Ops One', cursive;
+    font-family: 'Righteous', cursive;
+  }
+  .nav-link{
+    font-size: 22px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .nav-link:hover{
+    border-radius: 10px;
+    background-color: rgb(241, 146, 13);
+  }
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3">
     <div class="container-fluid">
-      <a class="navbar-brand ps-2 text-warning fw-bold" href="#">LOCALLY</a>
+      <a class="navbar-brand ps-2 text-warning locally" href="/">LOCALLY</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#expandme" >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="expandme">
           <div class="navbar-nav">
-              <a href="adminLand" class="nav-link mx-4">Home</a>
-              <a href="" class="nav-link mx-4">Your Services</a>
-              <a href="" class="nav-link mx-4">Features</a>
-              <a href="" class="nav-link mx-4">Inbox</a>
-              <a href="viewcustomer" class="nav-link mx-4">Costumer</a>
-              <a href="viewseller" class="nav-link mx-4">Workers</a>
-              <a href="/logout">LOGOUT</a>
+              <a href="/adminLand" class="nav-link active mx-4">Home</a>
+              <a href="/viewcustomer" class="nav-link active mx-4">Customer</a>
+              <a href="/viewseller" class="nav-link active mx-4">Workers</a>
+              <a href="/admin/broadcast" class="nav-link active mx-4">Broadcast</a>
+              <a href="/admin/pastbroadcast" class="nav-link active mx-4">past Broadcast</a>
+              <a href="/logout" class="nav-link border rounded-3 me-3 active position-absolute end-0 me-5">Logout</a>
             </div>
         </div>
     </div>
