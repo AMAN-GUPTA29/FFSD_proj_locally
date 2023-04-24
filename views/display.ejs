@@ -64,11 +64,13 @@
             <div class="container">
                 <div class="infos">
                     <h6 class="subtitle">Hello,I'm</h6>
-                    <h6 class="title"><%= pointer.name %></h6>
-                    <p><%= tag %></p>
+                    <h6 class="title"><%= doc1[0].pointer.name %></h6>
+                    <p><%= doc1[0].tag %></p>
+                    <p>Likes : <%= doc2[0].like %></p>
+                    <p>Dislikes : <%= doc2[0].dislike %></p>
 
                     <div class="buttons pt-3">
-                        <a href="/payment/<%= _id %>"> <button class="btn btn-primary rounded">HIRE
+                        <a href="/payment/<%= doc1[0].id %>"> <button class="btn btn-primary rounded">HIRE
                                 ME</button></a>
 
                     </div>
@@ -83,7 +85,7 @@
                 <div class="img-holder">
                     <img src="/images/man.svg" alt="">
                 </div>
-                <div class="widget">
+                <!-- <div class="widget">
                     <div class="widget-item">
                         <h2>124</h2>
                         <p>Happy Clients</p>
@@ -96,7 +98,7 @@
                         <h2>78</h2>
                         <p>positive ratings</p>
                     </div>
-                </div>
+                </div> -->
         </header>
 
 
@@ -112,9 +114,9 @@
                         <img src="/assets/imgs/avatar.jpg" alt="" class="img-thumbnail mb-4">
                     </div>
                     <div class="pl-md-4 col-md-9">
-                        <h6 class="title"><%= pointer.name %></h6>
-                        <p class="subtitle"><%= tag %></p>
-                        <p><%= description %></p>
+                        <h6 class="title"><%= doc1[0].pointer.name %></h6>
+                        <p class="subtitle"><%= doc1[0].tag %></p>
+                        <p><%= doc1[0].description %></p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, eius, nam. Quo praesentium
                             qui temporibus voluptatum, facilis aliquid eligendi fugiat beatae neque inventore non.
                             Laborum repellendus consequatur ullam voluptatum asperiores.</p>

@@ -273,7 +273,15 @@ app.get("/customerView/display/:ID", (req, res) => {
     .where({ _id: id })
     .populate("pointer")
     .then((doc) => {
-      res.render('display', doc[0])
+      myModels.sellerDetail.where('pointer').equals(doc[0].pointer._id)
+      .then((doc2) => {
+        res.render('display', {doc1 : doc, doc2 : doc2})
+
+      })
+      .catch((err) => {
+        console.log(err)
+        res.end(`<h1>Some Error Occured !!!</h1>`);
+      });
     })
     .catch((err) => {
       console.log(err)
@@ -948,4 +956,15 @@ app.post('/sendmsg',(req,res)=>{
     .catch((err) => {
       console.log(err);
     });
+})
+
+app.get('/broadcast', redirectUnLoggedCustomer, (req, res) => {
+  myModels.broadcastModel.where({})
+  .then(doc => {
+    res.render('broadcast', {data : doc})
+  })
+  .catch(err => {
+    console.log(err.message)
+    res.end("<h1>Some error Occured</h1>")
+  })
 })
