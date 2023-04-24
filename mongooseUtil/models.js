@@ -169,7 +169,7 @@ const  broadcastSchema = new  mongoose.Schema({
         required : true
     }
 })
-const broadcastModel = mongoose.model('history', broadcastSchema)
+const broadcastModel = mongoose.model('broadcast', broadcastSchema)
 
 
 module.exports.customerModel = customerModel;
