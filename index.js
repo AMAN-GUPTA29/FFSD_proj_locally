@@ -968,3 +968,14 @@ app.get('/broadcast', redirectUnLoggedCustomer, (req, res) => {
     res.end("<h1>Some error Occured</h1>")
   })
 })
+
+app.get('/seller/broadcast', redirectUnLoggedSeller, (req, res) => {
+  myModels.broadcastModel.where({})
+  .then(doc => {
+    res.render('broadcast', {data : doc})
+  })
+  .catch(err => {
+    console.log(err.message)
+    res.end("<h1>Some error Occured</h1>")
+  })
+})
