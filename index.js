@@ -274,14 +274,14 @@ app.get("/customerView/display/:ID", (req, res) => {
     .populate("pointer")
     .then((doc) => {
       myModels.sellerDetail.where('pointer').equals(doc[0].pointer._id)
-      .then((doc2) => {
-        res.render('display', {doc1 : doc, doc2 : doc2})
+        .then((doc2) => {
+          res.render('display', { doc1: doc, doc2: doc2 })
 
-      })
-      .catch((err) => {
-        console.log(err)
-        res.end(`<h1>Some Error Occured !!!</h1>`);
-      });
+        })
+        .catch((err) => {
+          console.log(err)
+          res.end(`<h1>Some Error Occured !!!</h1>`);
+        });
     })
     .catch((err) => {
       console.log(err)
@@ -568,7 +568,7 @@ app.post("/adminregister", (req, res) => {
   myAPI
     .save(myModels.adminModel, instance)
     .then((doc) => {
-      req.session.userID = doc[0]._id;
+      req.session.userID = doc._id;
       req.session.customer = false;
       req.session.seller = false;
       req.session.admin = true;
@@ -619,11 +619,11 @@ app.get("/viewcustomer", redirectUnLoggedAdmin, (req, res) => {
     .then((data) => {
       console.log(data);
       myModels.customerDetail
-      .find({})
-      .then((data2)=>{
-        console.log(data2[0]);
-        res.render("admin/viewcustomer", {data,data2});
-      })
+        .find({})
+        .then((data2) => {
+          console.log(data2[0]);
+          res.render("admin/viewcustomer", { data, data2 });
+        })
     })
     .catch((err) => {
       console.log(err);
@@ -635,11 +635,11 @@ app.get("/viewseller", redirectUnLoggedAdmin, (req, res) => {
     .then((data) => {
       console.log(data);
       myModels.sellerDetail
-      .find({})
-      .then((data2)=>{
-        console.log(data2);
-        res.render("admin/viewseller", {data,data2});
-      })
+        .find({})
+        .then((data2) => {
+          console.log(data2);
+          res.render("admin/viewseller", { data, data2 });
+        })
     })
     .catch((err) => {
       console.log(err);
@@ -711,30 +711,28 @@ app.get("/payment/:serviceID", redirectUnLoggedCustomer, (req, res) => {
   let serviceid = req.params.serviceID;
   let customerid = req.session.userID;
   myModels.servicesModel.where("_id").equals(serviceid)
-  .then(doc => {
-    let seller_id = doc[0].pointer
-    console.log("--------------------------------Hired---------------------------------")
-    console.log(seller_id)    
-    let instance = {
-    sellerid:  seller_id,
-     serviceid : serviceid,
-     customerid : customerid,
-     accepted : false
-    }
-    console.log(instance);
-    myAPI.save(myModels.requestModel , instance)
-    .then((field)=>
-    {
-      console.log(field);
-      // res.end(`<h1>Request has been generated for serviceid =${serviceid} and  </h1>`)
-      res.redirect('/customerrequest')
+    .then(doc => {
+      let seller_id = doc[0].pointer
+      console.log("--------------------------------Hired---------------------------------")
+      console.log(seller_id)
+      let instance = {
+        sellerid: seller_id,
+        serviceid: serviceid,
+        customerid: customerid,
+        accepted: false
+      }
+      console.log(instance);
+      myAPI.save(myModels.requestModel, instance)
+        .then((field) => {
+          console.log(field);
+          // res.end(`<h1>Request has been generated for serviceid =${serviceid} and  </h1>`)
+          res.redirect('/customerrequest')
+        })
+        .catch((err) => {
+          console.log(err);
+          res.end("<h2>an error has occurred</h2>")
+        })
     })
-    .catch((err)=>
-    {
-      console.log(err);
-      res.end("<h2>an error has occurred</h2>")
-    })
-  })
 
 })
 //   res.end(`<h1>Request for serviceId = ${serviceid} recieved, request generated</h1>`)
@@ -746,209 +744,208 @@ app.get("/seller/request", redirectUnLoggedSeller, async (req, res) => {
       .where("sellerid")
       .equals(req.session.userID)
       .exec();
-      let final = ""
-      const data2 = await Promise.all(data.map(async (obj) => {
-        const result = await myModels.servicesModel
-          .find({ _id: obj.serviceid })
-          .exec();
-        return result[0]; // Assuming only one object is returned
-      }));
-      
-      const data3 = await Promise.all(data.map(async (obj) => {
-        const result = await myModels.customerModel
-          .find({ _id: obj.customerid })
-          .exec();
-          return result[0];
-      }));    
-      // console.log("--------------------------------data---------------------------------")
-      // console.log(data);
-      // console.log(data2);
-      // console.log(data3);
-      const result = [];
+    let final = ""
+    const data2 = await Promise.all(data.map(async (obj) => {
+      const result = await myModels.servicesModel
+        .find({ _id: obj.serviceid })
+        .exec();
+      return result[0]; // Assuming only one object is returned
+    }));
+
+    const data3 = await Promise.all(data.map(async (obj) => {
+      const result = await myModels.customerModel
+        .find({ _id: obj.customerid })
+        .exec();
+      return result[0];
+    }));
+    // console.log("--------------------------------data---------------------------------")
+    // console.log(data);
+    // console.log(data2);
+    // console.log(data3);
+    const result = [];
     for (let i = 0; i < data.length; i++) {
-     result.push({ id:data[i]._id,customer: data3[i].name,email: data3[i].email,service: data2[i].tag,price:data2[i].charge,accepted:data[i].accepted });
+      result.push({ id: data[i]._id, customer: data3[i].name, email: data3[i].email, service: data2[i].tag, price: data2[i].charge, accepted: data[i].accepted });
     }
     console.log(result)
-    res.render('seller/myrequests',{result})
+    res.render('seller/myrequests', { result })
     // res.end("<h1>Fix the bug</h1>")
   } catch (err) {
     console.log(err);
   }
 });
 
-app.get('/seller/accepted/:state/:id',(req,res)=>{
+app.get('/seller/accepted/:state/:id', (req, res) => {
   const state = req.params.state
   const id = req.params.id
   console.log(state)
   // res.end(`<h1>${state} , ${id}</h1>`)
-    myModels.requestModel.find({_id:id}).then((data)=>{
-      data[0].accepted = state
-      data[0].save();
-      res.redirect('/seller/request')
-    })  
+  myModels.requestModel.find({ _id: id }).then((data) => {
+    data[0].accepted = state
+    data[0].save();
+    res.redirect('/seller/request')
+  })
 })
 
-app.get('/seller/rejected/:state/:id',(req,res)=>{
+app.get('/seller/rejected/:state/:id', (req, res) => {
   const state = req.params.state
   const id = req.params.id
   console.log(state)
   // res.end(`<h1>${state} , ${id}</h1>`)
-  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc)=>{
-          console.log(`deleted :${doc}`)
-          res.redirect('/seller/request')
-        })
+  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc) => {
+    console.log(`deleted :${doc}`)
+    res.redirect('/seller/request')
+  })
 })
 
-app.get('/customer/rejected/:state/:id',(req,res)=>{
+app.get('/customer/rejected/:state/:id', (req, res) => {
   const state = req.params.state
   const id = req.params.id
   console.log(state)
   // res.end(`<h1>${state} , ${id}</h1>`)
-  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc)=>{
-          console.log(`deleted :${doc}`)
-          res.redirect('/customerrequest')
-        })
+  myModels.requestModel.findOneAndDelete({ _id: id }).then((doc) => {
+    console.log(`deleted :${doc}`)
+    res.redirect('/customerrequest')
+  })
 })
 
-app.get("/customerrequest" , redirectUnLoggedCustomer, (req,res)=>
-{
+app.get("/customerrequest", redirectUnLoggedCustomer, (req, res) => {
   myModels.requestModel.where("customerid").equals(req.session.userID).populate("serviceid")
-  .then((data)=> {
-    console.log(data)
-    res.render('customerrequest' , {data:data})
+    .then((data) => {
+      console.log(data)
+      res.render('customerrequest', { data: data })
 
 
-  })
-  .catch(err => {
-    console.log(err)
-    res.end("<h1> Some error happened </h1>")
-  })
+    })
+    .catch(err => {
+      console.log(err)
+      res.end("<h1> Some error happened </h1>")
+    })
 
 })
 
 async function deleting() {
   const data = await myModels.requestModel
-  .deleteMany()
-  .then((doc) => {
-    console.log(doc)
-  })
+    .deleteMany()
+    .then((doc) => {
+      console.log(doc)
+    })
 }
 // deleting()
 
 
 app.get('/completed/:reqID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
-  let {reqID, sellerID} = req.params
+  let { reqID, sellerID } = req.params
   let customerID = req.session.userID;
 
   console.log(reqID, sellerID, customerID)
 
-  myModels.requestModel.deleteOne({_id : reqID})
-  .then(() => {
-    let instance = {
-      customerID : customerID,
-      sellerID : sellerID
-    }
-    myAPI.save(myModels.historyModel, instance)
+  myModels.requestModel.deleteOne({ _id: reqID })
     .then(() => {
-      res.redirect('/history')
+      let instance = {
+        customerID: customerID,
+        sellerID: sellerID
+      }
+      myAPI.save(myModels.historyModel, instance)
+        .then(() => {
+          res.redirect('/history')
+        })
+        .catch(err => {
+          console.log(err.message)
+          res.end("<h1>Some error Occured</h1>")
+        })
     })
-    .catch(err => {
-      console.log(err.message)
-      res.end("<h1>Some error Occured</h1>")
-    })    
-  })
 })
 
 app.get('/history', redirectUnLoggedCustomer, (req, res) => {
   myModels.historyModel.where('customerID').equals(req.session.userID).populate('sellerID')
-  .then(doc => {
-    res.render('history', {data : doc})
-  })
-  .catch(err => {
-    console.log(err.message)
-    res.end("<h1>Some error Occured</h1>")
-  })
+    .then(doc => {
+      res.render('history', { data: doc })
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
 })
 
 app.get('/like/:histID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
-  let {histID, sellerID} = req.params;
-  myModels.historyModel.findOneAndDelete({_id : histID})
-  .then(() => {
-    myModels.sellerDetail.where('pointer').equals(sellerID)
-    .then((doc) => {
-      let likes = doc[0].like;
-      console.log(likes)
-      likes += 1;
-      myModels.sellerDetail
-      .updateOne(
-        { pointer: sellerID },
-        { $set: { like : likes } }
-      )
-      .then(() => res.redirect('/customerView'))
-      .catch(err => {
-        console.log(err.message)
-        res.end("<h1>Some error Occured</h1>")
-      })
+  let { histID, sellerID } = req.params;
+  myModels.historyModel.findOneAndDelete({ _id: histID })
+    .then(() => {
+      myModels.sellerDetail.where('pointer').equals(sellerID)
+        .then((doc) => {
+          let likes = doc[0].like;
+          console.log(likes)
+          likes += 1;
+          myModels.sellerDetail
+            .updateOne(
+              { pointer: sellerID },
+              { $set: { like: likes } }
+            )
+            .then(() => res.redirect('/customerView'))
+            .catch(err => {
+              console.log(err.message)
+              res.end("<h1>Some error Occured</h1>")
+            })
+        })
+        .catch(err => {
+          console.log(err.message)
+          res.end("<h1>Some error Occured</h1>")
+        })
     })
     .catch(err => {
       console.log(err.message)
       res.end("<h1>Some error Occured</h1>")
     })
-  })
-  .catch(err => {
-    console.log(err.message)
-    res.end("<h1>Some error Occured</h1>")
-  })
 })
 
 app.get('/dislike/:histID/:sellerID', redirectUnLoggedCustomer, (req, res) => {
-  let {histID, sellerID} = req.params;
-  myModels.historyModel.findOneAndDelete({_id : histID})
-  .then(() => {
-    myModels.sellerDetail.where('pointer').equals(sellerID)
-    .then((doc) => {
-      let dislikes = doc[0].dislike;
-      console.log(dislikes)
-      dislikes += 1;
-      myModels.sellerDetail
-      .updateOne(
-        { pointer: sellerID },
-        { $set: { dislike : dislikes } }
-      )
-      .then(() => res.redirect('/customerView'))
-      .catch(err => {
-        console.log(err.message)
-        res.end("<h1>Some error Occured</h1>")
-      })
+  let { histID, sellerID } = req.params;
+  myModels.historyModel.findOneAndDelete({ _id: histID })
+    .then(() => {
+      myModels.sellerDetail.where('pointer').equals(sellerID)
+        .then((doc) => {
+          let dislikes = doc[0].dislike;
+          console.log(dislikes)
+          dislikes += 1;
+          myModels.sellerDetail
+            .updateOne(
+              { pointer: sellerID },
+              { $set: { dislike: dislikes } }
+            )
+            .then(() => res.redirect('/customerView'))
+            .catch(err => {
+              console.log(err.message)
+              res.end("<h1>Some error Occured</h1>")
+            })
+        })
+        .catch(err => {
+          console.log(err.message)
+          res.end("<h1>Some error Occured</h1>")
+        })
     })
     .catch(err => {
       console.log(err.message)
       res.end("<h1>Some error Occured</h1>")
     })
-  })
-  .catch(err => {
-    console.log(err.message)
-    res.end("<h1>Some error Occured</h1>")
-  })
 })
 
-app.get('/admin/broadcast',(req,res)=>{
+app.get('/admin/broadcast', (req, res) => {
   res.render('admin/broadcast')
 })
 
-app.get('/admin/pastbroadcast',(req,res)=>{
-  myModels.broadcastModel.find().then((data)=>{
-    res.render('admin/pastbroadcast',{data})
+app.get('/admin/pastbroadcast', (req, res) => {
+  myModels.broadcastModel.find().then((data) => {
+    res.render('admin/pastbroadcast', { data })
   })
 })
 
-app.post('/sendmsg',(req,res)=>{
+app.post('/sendmsg', (req, res) => {
   let instance = {
     message: req.body.message,
   };
 
   myAPI
-    .save(myModels.broadcastModel , instance)
+    .save(myModels.broadcastModel, instance)
     .then((doc) => {
       console.log(doc.message);
       res.redirect('/admin/pastbroadcast')
@@ -960,22 +957,22 @@ app.post('/sendmsg',(req,res)=>{
 
 app.get('/broadcast', redirectUnLoggedCustomer, (req, res) => {
   myModels.broadcastModel.where({})
-  .then(doc => {
-    res.render('broadcast', {data : doc})
-  })
-  .catch(err => {
-    console.log(err.message)
-    res.end("<h1>Some error Occured</h1>")
-  })
+    .then(doc => {
+      res.render('broadcast', { data: doc })
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
 })
 
 app.get('/seller/broadcast', redirectUnLoggedSeller, (req, res) => {
   myModels.broadcastModel.where({})
-  .then(doc => {
-    res.render('broadcast', {data : doc})
-  })
-  .catch(err => {
-    console.log(err.message)
-    res.end("<h1>Some error Occured</h1>")
-  })
+    .then(doc => {
+      res.render('broadcast', { data: doc })
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
 })
