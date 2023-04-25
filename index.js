@@ -969,7 +969,7 @@ app.get('/broadcast', redirectUnLoggedCustomer, (req, res) => {
 app.get('/seller/broadcast', redirectUnLoggedSeller, (req, res) => {
   myModels.broadcastModel.where({})
     .then(doc => {
-      res.render('broadcast', { data: doc })
+      res.render('seller/broadcast', { data: doc })
     })
     .catch(err => {
       console.log(err.message)
