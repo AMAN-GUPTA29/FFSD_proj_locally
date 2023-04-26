@@ -125,8 +125,8 @@ app.get("/customerView", redirectUnLoggedCustomer, (req, res) => {
     res.render("customerView", {
       data: doc,
       image: [
-        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png",
-        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png",
+        "/offline/1.png",
+        "/offline/2.png",
       ],
     });
   });
@@ -139,8 +139,8 @@ app.get("/filter", redirectUnLoggedCustomer, (req, res) => {
     res.render("customerView", {
       data: doc,
       image: [
-        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/rZJIMvhmliwmde8a6/videoblocks-close-up-face-of-shocked-dark-skinned-businessman-afro-american-entrepreneur-looking-shocked-and-scared-on-blurred-background-human-expression-of-shock_rx4umbqw7_thumbnail-1080_01.png",
-        "https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/4ZrVLdVKeijzurndz/people-emotion-and-facial-expression-concept-face-of-happy-smiling-middle-aged-woman-at-office_rleqp4y7g_thumbnail-1080_09.png",
+        "/offline/1.png",
+        "/offline/2.png",
       ],
     });
   })
