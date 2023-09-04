@@ -15,23 +15,28 @@ const smallAlpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
 const special = "!@#\$%\^\&*\)\(+=._-".split('')
 
 
-function check(mail){
-    let flag = 0
-    mail = mail.split('')
-    // console.log(mail)
-    mail.forEach(element => {
-        if(element == '@'){
-            flag = 1
-        }else if(element == '.' && flag == 1){
-            // console.log(element + " " + flag)
-            flag = 2
-            // return true
-        }
-    });
-    if(flag == 2) return true;
-    else return false
-}
+// function check(mail){
+//     let flag = 0
+//     mail = mail.split('')
+//     // console.log(mail)
+//     mail.forEach(element => {
+//         if(element == '@'){
+//             flag = 1
+//         }else if(element == '.' && flag == 1){
+//             // console.log(element + " " + flag)
+//             flag = 2
+//             // return true
+//         }
+//     });
+//     if(flag == 2) return true;
+//     else return false
+// }
 
+
+function check(mail) {
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}$');
+    return regex.test(mail)
+}
 
 document.getElementById('f1').addEventListener('submit', (event) => {
     let errs = "";
