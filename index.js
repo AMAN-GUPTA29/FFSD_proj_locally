@@ -11,6 +11,8 @@ const myAPI = require("./mongooseUtil/api.js");
 const uri = require("./mongooseUtil/mongo_pass.js");
 const session = require("express-session");
 
+const cors = require('cors')
+
 const PORT = 8000;
 
 const databasePath = path.join(__dirname, "data", "database.db");
@@ -48,6 +50,8 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
+
+app.use(cors())
 
 app.use(
   session({
@@ -976,3 +980,30 @@ app.get('/seller/broadcast', redirectUnLoggedSeller, (req, res) => {
       res.end("<h1>Some error Occured</h1>")
     })
 })
+
+
+
+
+
+
+
+
+
+// -------------------------------------------------- API --------------------------------------------------
+
+app.get('/api/customermail/:email', (req, res) => {
+  let mail = req.params.email;
+  myModels.customerModel.where({ email: mail })
+    .then(arr => {
+      let ans = JSON.stringify({
+        isNotPresent: arr.length == 0
+      });
+      res.send(ans);
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
+})
+
+
