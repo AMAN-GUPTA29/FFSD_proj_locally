@@ -10,12 +10,34 @@
 
   <link rel="stylesheet" href="/css/loginCustomer.css" />
   <title>Document</title>
+
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script> -->
+
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .alert {
+      height: 25px;
+      width: 280px;
+      background-color: rgb(255, 78, 78);
+      color: whitesmoke;
+      margin: 2px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <form id="f1" action="/welcome" method="post"> <!-- Form starts -->
+      <form id="f1" action="/welcome" method="post">                 <!-- Form starts -->
         <h1>Create Account</h1>
 
         <span>or use your email for registration</span>
@@ -23,19 +45,39 @@
         <input type="email" placeholder="Email" name="email" id="create-email" required />
         <input type="password" placeholder="Password" name="password" id="create-password" required />
         <button onclick="SubmitEvent">Sign Up</button>
-      </form> <!-- Form ends -->
+      </form>                                                        <!-- Form ends -->
     </div>
+
+
+
+
+
     <div class="form-container sign-in-container">
-      <form id="f2" action="/getin" method="post"> <!-- Form starts -->
+      <form id="f2" action="/getin" method="post">                   <!-- Form starts -->
         <h1>Sign in</h1>
 
         <span>or use your account</span>
-        <input type="email" placeholder="Email" id="email" name="email" onchange="if (!check(this.value)) alert(`Email must be of format xyz@abc.pqr`);"/>
+        <input 
+            type="email" 
+            placeholder="Email" 
+            id="email" name="email" 
+            onchange="if (!check(this.value)) alert(`Email must be of format xyz@abc.pqr`);"
+        />
+        <div class="alert alert-danger hidden" id="email-alert-signin" role="alert">
+            Input Valid Email
+        </div>
+
+        <div class="alert alert-warning hidden" id="email-taken-signin" role="alert">
+            Email Not Present - Register
+        </div>
         <input type="password" placeholder="Password" id="password" name="password" />
         <a href="#">Forgot your password?</a>
         <button onclick="SubmitEvent">Sign In</button>
-      </form> <!-- Form ends -->
+      </form>                                                       <!-- Form ends -->
     </div>
+
+
+
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
