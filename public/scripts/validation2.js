@@ -15,28 +15,55 @@ const smallAlpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
 const special = "!@#\$%\^\&*\)\(+=._-".split('')
 
 
-function check(mail){
-    let flag = 0
-    mail = mail.split('')
-    // console.log(mail)
-    mail.forEach(element => {
-        if(element == '@'){
-            flag = 1
-        }else if(element == '.' && flag == 1){
-            // console.log(element + " " + flag)
-            flag = 2
-            // return true
-        }
-    });
-    if(flag == 2) return true;
-    else return false
-}
+// function check(mail){
+//     let flag = 0
+//     mail = mail.split('')
+//     // console.log(mail)
+//     mail.forEach(element => {
+//         if(element == '@'){
+//             flag = 1
+//         }else if(element == '.' && flag == 1){
+//             // console.log(element + " " + flag)
+//             flag = 2
+//             // return true
+//         }
+//     });
+//     if(flag == 2) return true;
+//     else return false
+// }
 
+
+function check(mail) {
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}$');
+    document.getElementById("email-taken-signin").classList.add('hidden')
+
+    if (regex.test(mail)) {
+        document.getElementById("email-alert-signin").classList.add('hidden')
+
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4) {
+                let res = JSON.parse(xhr.response)
+                if (res.isNotPresent) {
+                    document.getElementById("email-taken-signin").classList.remove('hidden')
+                }
+            }
+        }
+
+        xhr.open('GET', `http://localhost:8000/api/customermail/${mail}`)
+        xhr.send()
+        return true
+    }
+    else {
+        return false;
+    }
+}
 
 document.getElementById('f1').addEventListener('submit', (event) => {
     let errs = "";
     console.log(password2.value.length)
-    if (!check(email2.value)){
+    if (!check(email2.value)) {
         errs += "Email must be of format xyz@abc.pqr"
     }
     else if (password2.value.length <= 5 || password2.value.length >= 21) {
@@ -56,7 +83,7 @@ document.getElementById('f1').addEventListener('submit', (event) => {
             else final = 0;
         });
 
-        if(a*b*c*d*final == 0) errs += "Password Must Have Capital, Small, Numeric and Special Characters (!@#\$%\^\&*\)\(+=._-) only.\n"
+        if (a * b * c * d * final == 0) errs += "Password Must Have Capital, Small, Numeric and Special Characters (!@#\$%\^\&*\)\(+=._-) only.\n"
     }
 
 
@@ -70,7 +97,8 @@ document.getElementById('f1').addEventListener('submit', (event) => {
 document.getElementById('f2').addEventListener('submit', (event) => {
     let errs = "";
     console.log(password.value.length)
-    if (!check(email.value)){
+    if (!check(email.value)) {
+        n
         errs += "Email must be of format xyz@abc.pqr"
     }
     if (password.value.length <= 5 || password.value.length >= 21) {
@@ -90,7 +118,7 @@ document.getElementById('f2').addEventListener('submit', (event) => {
             else final = 0;
         });
 
-        if(a*b*c*d*final == 0) errs += "Password Must Have Capital, Small, Numeric and Special Characters (!@#\$%\^\&*\)\(+=._-) only.\n"
+        if (a * b * c * d * final == 0) errs += "Password Must Have Capital, Small, Numeric and Special Characters (!@#\$%\^\&*\)\(+=._-) only.\n"
     }
 
 
