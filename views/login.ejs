@@ -37,15 +37,22 @@
 <body>
   <div class="container" id="container">
     <div class="form-container sign-up-container">
-      <form id="f1" action="/welcome" method="post">                 <!-- Form starts -->
+      <form id="f1" action="/welcome" method="post"> <!-- Form starts -->
         <h1>Create Account</h1>
 
         <span>or use your email for registration</span>
         <input type="text" placeholder="Name" name="name" id="create-name" required />
-        <input type="email" placeholder="Email" name="email" id="create-email" required />
+        <input type="email" placeholder="Email" name="email" id="create-email"
+          onchange="if (!checkr(this.value)) alert(`Email must be of format xyz@abc.pqr`);" required />
+        <div class="alert alert-danger hidden" id="email-alertregister-signin" role="alert">
+          Input Valid Email
+        </div>
+        <div class="alert alert-warning hidden" id="email-exist-signin" role="alert">
+          Email Taken - Try another Email
+        </div>
         <input type="password" placeholder="Password" name="password" id="create-password" required />
         <button onclick="SubmitEvent">Sign Up</button>
-      </form>                                                        <!-- Form ends -->
+      </form> <!-- Form ends -->
     </div>
 
 
@@ -53,27 +60,23 @@
 
 
     <div class="form-container sign-in-container">
-      <form id="f2" action="/getin" method="post">                   <!-- Form starts -->
+      <form id="f2" action="/getin" method="post"> <!-- Form starts -->
         <h1>Sign in</h1>
 
         <span>or use your account</span>
-        <input 
-            type="email" 
-            placeholder="Email" 
-            id="email" name="email" 
-            onchange="if (!check(this.value)) alert(`Email must be of format xyz@abc.pqr`);"
-        />
+        <input type="email" placeholder="Email" id="email" name="email"
+          onchange="if (!check(this.value)) alert(`Email must be of format xyz@abc.pqr`);" />
         <div class="alert alert-danger hidden" id="email-alert-signin" role="alert">
-            Input Valid Email
+          Input Valid Email
         </div>
 
         <div class="alert alert-warning hidden" id="email-taken-signin" role="alert">
-            Email Not Present - Register
+          Email Not Present - Register
         </div>
         <input type="password" placeholder="Password" id="password" name="password" />
         <a href="#">Forgot your password?</a>
         <button onclick="SubmitEvent">Sign In</button>
-      </form>                                                       <!-- Form ends -->
+      </form> <!-- Form ends -->
     </div>
 
 
