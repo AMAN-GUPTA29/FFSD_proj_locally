@@ -66,6 +66,13 @@ const smallAlpha = [
 ];
 const special = "!@#$%^&*)(+=._-".split("");
 
+function validPassword(pass) {
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}/;
+  // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;  
+  // const passwordRegex =    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,20}/
+  return passwordRegex.test(pass);
+}
+
 // function check(mail){
 //     let flag = 0
 //     mail = mail.split('')
@@ -215,23 +222,27 @@ document.getElementById("f2").addEventListener("submit", (event) => {
   if (password.value.length <= 5 || password.value.length >= 21) {
     errs += "Password Must Be At Least Of Length 6 and Max Length Can Be 20.\n";
   } else {
-    let p = password.value.split("");
-    let a = 0;
-    let b = 0;
-    let c = 0;
-    let d = 0;
-    let final = 1;
-    p.forEach((alpha) => {
-      if (capitalAlpha.includes(alpha)) a++;
-      else if (num.includes(alpha)) b++;
-      else if (smallAlpha.includes(alpha)) c++;
-      else if (special.includes(alpha)) d++;
-      else final = 0;
-    });
+    // let p = password.value.split("");
+    // let a = 0;
+    // let b = 0;
+    // let c = 0;
+    // let d = 0;
+    // let final = 1;
+    // p.forEach((alpha) => {
+    //   if (capitalAlpha.includes(alpha)) a++;
+    //   else if (num.includes(alpha)) b++;
+    //   else if (smallAlpha.includes(alpha)) c++;
+    //   else if (special.includes(alpha)) d++;
+    //   else final = 0;
+    // });
 
-    if (a * b * c * d * final == 0)
-      errs +=
-        "Password Must Have Capital, Small, Numeric and Special Characters (!@#$%^&*)(+=._-) only.\n";
+    // if (a * b * c * d * final == 0)
+    //   errs +=
+    //     "Password Must Have Capital, Small, Numeric and Special Characters (!@#$%^&*)(+=._-) only.\n";
+    if (!validPassword(password.value)) {
+      errs += "Password Must Have Capital, Small, Numeric and Special Characters (!@#$%^&*)(+=._-) only.\n";
+      // console.log(password.value, validPassword(password.value))
+    }
   }
 
   if (errs != "") {
