@@ -143,6 +143,35 @@ function check(mail) {
   }
 }
 
+function checkseller(mail) {
+  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}$");
+  document.getElementById("email-taken-signin").classList.add("hidden");
+
+  if (regex.test(mail)) {
+    document.getElementById("email-alert-signin").classList.add("hidden");
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4) {
+        let res = JSON.parse(xhr.response);
+        if (res.isNotPresent) {
+          document.getElementById("email-taken-signin").style.color = "red"
+          document
+            .getElementById("email-taken-signin")
+            .classList.remove("hidden");
+        }
+      }
+    };
+
+    xhr.open("GET", `http://localhost:8000/api/sellermail/${mail}`);
+    xhr.send();
+    return true;
+  } else {
+    return false;
+  }
+}
+
 document.getElementById("f1").addEventListener("submit", (event) => {
   let errs = "";
   console.log(password2.value.length);
