@@ -1023,3 +1023,17 @@ app.get('/api/adminmail/:email', (req, res) => {
     })
 })
 
+app.get('/api/sellermail/:email', (req, res) => {
+  let mail = req.params.email;
+  myModels.sellerModel.where({ email: mail })
+    .then(arr => {
+      let ans = JSON.stringify({
+        isNotPresent: arr.length == 0
+      });
+      res.send(ans);
+    })
+    .catch(err => {
+      console.log(err.message)
+      res.end("<h1>Some error Occured</h1>")
+    })
+})
