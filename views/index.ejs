@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/index.css" />
+  <script defer src="scripts/loadanimation.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,6 +17,7 @@
 
   <title>Document</title>
 </head>
+
 
 <body>
   <header class="header">
@@ -38,7 +40,7 @@
 
 
   <main>
-    <section class="section-hero">
+    <section class="section-hero slidetrans">
       <div class="hero">
         <div class="hero-white">
           <div class="hero-text-box">
@@ -85,21 +87,25 @@
       </div>
     </section>
 
-    <section class="section-featured">
+    <div class="testy"></div>
+
+    <section class="section-featured slidetrans">
       <div class="container">
         <h2 class="heading-featured-in">As featured in</h2>
         <div class="logos">
-          <img src="images/img/logos/techcrunch.png" alt="Techcrunch logo" />
-          <img src="images/img/logos/business-insider.png" alt="Business Insider logo" />
-          <img src="images/img/logos/the-new-york-times.png" alt="The New York Times logo" />
-          <img src="images/img/logos/forbes.png" alt="Forbes logo" />
-          <img src="images/img/logos/usa-today.png" alt="USA Today logo" />
+          <img class="logo slidetrans" src="images/img/logos/techcrunch.png" alt="Techcrunch logo" />
+          <img class="logo slidetransl" src="images/img/logos/business-insider.png" alt="Business Insider logo" />
+          <img class="logo slidetrans" src="images/img/logos/the-new-york-times.png" alt="The New York Times logo" />
+          <img class="logo slidetransl" src="images/img/logos/forbes.png" alt="Forbes logo" />
+          <img class="logo slidetrans" src="images/img/logos/usa-today.png" alt="USA Today logo" />
         </div>
       </div>
     </section>
 
-    <section class="part-sec">
-      <div class="part1">
+    <div class="testy"></div>
+
+    <section class="part-sec slidetrans">
+      <div class="part1 ">
         <h2 class="heading-secondary secondary-changes">
           How we started. . .
         </h2>
@@ -129,7 +135,7 @@
           destination for people looking for local services.
         </p>
       </div>
-      <div class="part2">
+      <div class="part2 ">
         <h2 class="heading-secondary secondary-changes postion-change">
           Future Plans. . .
         </h2>
@@ -164,107 +170,114 @@
       </div>
     </section>
 
-    <%- include('indexCards.ejs') %>
+    <div class="testy"></div>
 
-      <section class="section-testimonials partsec2" id="testimonials">
-        <div class="part11">
-          <div class="testimonials-container">
-            <span class="subheading">Testimonials</span>
-            <h2 class="heading-secondary">
-              Once you try it, you can't go back
-            </h2>
+    <section class="slidetrans">
+      <%- include('indexCards.ejs') %>
+    </section>
 
-            <div class="testimonials">
-              <div class="testi-background">
-                <figure class="testimonial">
-                  <img class="testimonial-img" alt="Photo of customer Dave Bryson"
-                    src="images/img/customers/dave.jpg" />
-                  <blockquote class="testimonial-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed deserunt explicabr ea maxime quos
-                    perspiciatis. A earum laboriosam
-                  </blockquote>
-                  <p class="testimonial-name">&mdash; Dave Bryson</p>
-                </figure>
-              </div>
+    <div class="testy"></div>
 
-              <div class="testi-background">
-                <figure class="testimonial">
-                  <img class="testimonial-img" alt="Photo of customer Ben Hadley" src="images/img/customers/ben.jpg" />
-                  <blockquote class="testimonial-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum! Ab, quidem! Exercitationem nemo
-                    sfhjjd in unde quasi aperiam fuga
-                  </blockquote>
-                  <p class="testimonial-name">&mdash; Ben Hadley</p>
-                </figure>
-              </div>
 
-              <div class="testi-background">
-                <figure class="testimonial">
-                  <img class="testimonial-img" alt="Photo of customer Steve Miller"
-                    src="images/img/customers/steve.jpg" />
-                  <blockquote class="testimonial-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur autem beatae, accusantium,
-                    cupiditate expedita rupti, ipsam! Vitae
-                  </blockquote>
-                  <p class="testimonial-name">&mdash; Steve Miller</p>
-                </figure>
-              </div>
 
-              <div class="testi-background">
-                <figure class="testimonial">
-                  <img class="testimonial-img" alt="Photo of customer Hannah Smith"
-                    src="images/img/customers/hannah.jpg" />
-                  <blockquote class="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ea nemo exercitationem sint
-                    nisi suscipit repellendus ad ab
-                  </blockquote>
-                  <p class="testimonial-name">&mdash; Hannah Smith</p>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="part22">
-          <div class="gallery">
-
-            <% for(let i=0; i < 15; i++){ %>
-              <figure class="gallery-item">
-                <img src="images/image/allservice/<%= i+1 %>.jpg" alt="Photo of beautifully
-                  arranged food" />
-              </figure>
-              <% } %>
-
-          </div>
-        </div>
-      </section>
-      <section>
-        <div class="seller-login">
-          <h2 class="heading-secondary marghead">
-            Wanna become a service provider click below
+    <section class="section-testimonials partsec2 slidetrans" id="testimonials">
+      <div class="part11">
+        <div class="testimonials-container">
+          <span class="subheading">Testimonials</span>
+          <h2 class="heading-secondary">
+            Once you try it, you can't go back
           </h2>
-          <div class="container grid grid--2-cols grid--center-v">
-            <div>
-              <p class="step-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus reiciendis, non officiis, magni ducimus temporibus
-                praesentium assumenda excepturi tempora quae quas, suscipit
-                labore. Id cumque quasi, natus obcaecati quaerat non.
-              </p>
+
+          <div class="testimonials">
+            <div class="testi-background slidetrans">
+              <figure class="testimonial">
+                <img class="testimonial-img" alt="Photo of customer Dave Bryson" src="images/img/customers/dave.jpg" />
+                <blockquote class="testimonial-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed deserunt explicabr ea maxime quos
+                  perspiciatis. A earum laboriosam
+                </blockquote>
+                <p class="testimonial-name">&mdash; Dave Bryson</p>
+              </figure>
             </div>
-            <div>
-              <a href="/seller/login" class="btn btn--full margin-right-sm margbutton">Get started</a>
+
+            <div class="testi-background slidetrans">
+              <figure class="testimonial">
+                <img class="testimonial-img" alt="Photo of customer Ben Hadley" src="images/img/customers/ben.jpg" />
+                <blockquote class="testimonial-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum! Ab, quidem! Exercitationem nemo
+                  sfhjjd in unde quasi aperiam fuga
+                </blockquote>
+                <p class="testimonial-name">&mdash; Ben Hadley</p>
+              </figure>
+            </div>
+
+            <div class="testi-background slidetrans">
+              <figure class="testimonial">
+                <img class="testimonial-img" alt="Photo of customer Steve Miller"
+                  src="images/img/customers/steve.jpg" />
+                <blockquote class="testimonial-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur autem beatae, accusantium,
+                  cupiditate expedita rupti, ipsam! Vitae
+                </blockquote>
+                <p class="testimonial-name">&mdash; Steve Miller</p>
+              </figure>
+            </div>
+
+            <div class="testi-background slidetrans">
+              <figure class="testimonial">
+                <img class="testimonial-img" alt="Photo of customer Hannah Smith"
+                  src="images/img/customers/hannah.jpg" />
+                <blockquote class="testimonial-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ea nemo exercitationem sint
+                  nisi suscipit repellendus ad ab
+                </blockquote>
+                <p class="testimonial-name">&mdash; Hannah Smith</p>
+              </figure>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div class="part22">
+        <div class="gallery">
+
+          <% for(let i=0; i < 15; i++){ %>
+            <figure class="gallery-item slidetrans">
+              <img src="images/image/allservice/<%= i+1 %>.jpg" alt="Photo of beautifully
+                  arranged food" />
+            </figure>
+            <% } %>
+
+        </div>
+      </div>
+    </section>
+    <section class="slidetrans">
+      <div class="seller-login">
+        <h2 class="heading-secondary marghead">
+          Wanna become a service provider click below
+        </h2>
+        <div class="container grid grid--2-cols grid--center-v">
+          <div>
+            <p class="step-description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Repellendus reiciendis, non officiis, magni ducimus temporibus
+              praesentium assumenda excepturi tempora quae quas, suscipit
+              labore. Id cumque quasi, natus obcaecati quaerat non.
+            </p>
+          </div>
+          <div>
+            <a href="/seller/login" class="btn btn--full margin-right-sm margbutton">Get started</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
-      <section>
-        <div class="modify"></div>
-      </section>
+    <section>
+      <div class="modify"></div>
+    </section>
 
-      <%- include('footerv2.ejs') %>
+    <%- include('footerv2.ejs') %>
 
 
   </main>
