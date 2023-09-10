@@ -43,6 +43,40 @@ function checkEmail(email) {
     }
 }
 
+function checksellermail(email) {
+    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}$');
+    let emailStatusDiv = document.getElementById("email-status");
+
+    if (regex.test(email)) {
+        emailStatusDiv.classList.add('hidden');
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4) {
+                let res = JSON.parse(xhr.response);
+                if (!res.isNotPresent) {
+                    emailStatusDiv.style.color = "red"
+                    emailStatusDiv.innerText = "Email is already taken. Please choose another one.";
+                    emailStatusDiv.classList.remove('hidden');
+                }
+                //  else {
+                //     emailStatusDiv.innerText = "Email is available.";                    
+                //     emailStatusDiv.classList.remove('hidden');
+                // }
+            }
+        };
+
+        xhr.open('GET', `http://localhost:8000/api/sellermail/${email}`);
+        xhr.send();
+        return true;
+    } else {
+        emailStatusDiv.innerText = "Please enter a valid email address.";
+        emailStatusDiv.classList.remove('hidden');
+        return false;
+    }
+}
+
 
 document.addEventListener('submit', (event) => {
     let errs = "";
