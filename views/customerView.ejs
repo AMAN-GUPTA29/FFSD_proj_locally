@@ -50,29 +50,66 @@
         .card {
             box-shadow: 1px 1px 1px 3px rgb(219, 219, 219);
         }
+
         .hidden {
             display: none;
+        }
+
+
+        /* .mainbutton:link,
+        .mainbutton:visited {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+
+
+        .mainbutton:hover,
+        .mainbutton:active {
+            color: #cb997e;
+        } */
+
+
+
+
+        .mainotherbutton:link,
+        .mainotherbutton:visited {
+            margin-top: 2%;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9px;
+            color: #fff;
+            background-color: #bb3e03;
+            text-decoration: none;
+
+        }
+
+        .mainotherbutton:hover,
+        .mainotherbutton:active {
+            background-color: #cb997e;
         }
     </style>
 </head>
 
 <body>
     <%- include('navAfterLogin') %>
-    <br>
+        <br>
 
         <div class="container mb-5  ">
             <input type="button" class="border-dark flex-left px-5 py-2 fltr mb-2" onclick="filter()" value="Filters">
-<br>
+            <br>
             <form class="hidden" id="form" action="/filter">
-                
-                
-                <select name="filter_details"class="form-select " aria-label="Default select example">
+
+
+                <select name="filter_details" class="form-select " aria-label="Default select example">
                     <option value="Electric">Electric</option>
                     <option value="Auto-Rickshaw">Auto-Rickshaw</option>
-       
-                  </select>
-                  <br>
-                  <input type="submit">
+
+                </select>
+                <br>
+                <input type="submit">
             </form>
             <br>
             <div class="container-fluid">
@@ -81,7 +118,7 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src=<%= image[i%2] %>
+                                <img src=<%=image[i%2] %>
                                 class="img-fluid rounded-start" alt="Seller_Image" >
                             </div>
                             <div class="col-md-8">
@@ -93,20 +130,21 @@
                                     <% if(data[i].charge) { %>
                                         <h5 class="card-title">Charge : <%= data[i].charge %>
                                         </h5>
-                                    <% } else { %>
-                                        <h5 class="card-title">Charge : Undiscloded
-                                        </h5>
-                                    <% } %>
-                                    <p class="card-text mb-4">
-                                        <%= data[i].description %>
-                                    </p>
-                                    <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                                    <h6><a href="/customerView/display/<%= data[i]._id %>" >Hire</a></h6>
+                                        <% } else { %>
+                                            <h5 class="card-title">Charge : Undiscloded
+                                            </h5>
+                                            <% } %>
+                                                <p class="card-text mb-4">
+                                                    <%= data[i].description %>
+                                                </p>
+                                                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                                <h6><a class="mainbutton mainotherbutton"
+                                                        href="/customerView/display/<%= data[i]._id %>">Hire</a></h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <% } %>
+                    <% } %>
 
 
 
@@ -131,12 +169,12 @@
                 integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
                 crossorigin="anonymous"></script>
 
-                <script>
-                    function filter () {
-                        let palceForm = document.getElementById('form')
-                        palceForm.classList.toggle('hidden')
-                    }
-                </script>
+            <script>
+                function filter() {
+                    let palceForm = document.getElementById('form')
+                    palceForm.classList.toggle('hidden')
+                }
+            </script>
 </body>
 
 </html>
