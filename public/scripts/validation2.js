@@ -124,6 +124,7 @@ function check(mail) {
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState == 4) {
+        document.getElementById('spinner-signin').classList.remove("lds-dual-ring")
         let res = JSON.parse(xhr.response);
         if (res.isNotPresent) {
           document
@@ -135,6 +136,7 @@ function check(mail) {
 
     xhr.open("GET", `http://localhost:8000/api/customermail/${mail}`);
     xhr.send();
+    document.getElementById('spinner-signin').classList.add("lds-dual-ring");
     return true;
   } else {
     return false;
