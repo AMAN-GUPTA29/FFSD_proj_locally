@@ -94,6 +94,9 @@
             margin: 10px;
             cursor: pointer;
         }
+        .hidden {
+            display: none;
+          }
     </style>
 </head>
 
@@ -101,12 +104,19 @@
 
     <div class="form-container">
         <h1>Seller Login</h1>
-        <form class="form" action="/seller/getin" method="post">
+        <form class="form" action="/seller/getin" method="post" id="f2">
             <div class="input-group">
                 <label for="email">Email :</label><br>
                 <span><i class="fa-solid fa-envelope fa-lg"></i></span>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" onchange="if (!checkseller(this.value)) alert(`Email must be of format xyz@abc.pqr`);" required>
             </div>
+            <div class="alert alert-danger hidden" id="email-alert-signin">
+                Input Valid Email
+              </div>
+      
+              <div class="hidden" id="email-taken-signin">
+                Email is Not Present - Register
+              </div>
             <div class="input-group">
                 <label for="password">Password :</label><br>
                 <span><i class="fa-solid fa-key fa-lg"></i></span>
@@ -131,7 +141,8 @@
         </div>
     </div>
 
-    <script src="/scripts/loginValidation.js"></script>
+    <!-- <script src="/scripts/loginValidation.js"></script> -->
+    <script src="/scripts/validation2.js"></script>
 
 </body>
 
