@@ -139,7 +139,7 @@ color: white;
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-envelope-fill icon" viewBox="0 0 16 16">
                         <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                     </svg>
-                    <input id="email" type="email" placeholder="Email" id="email" name="email" oninput="checkEmail(this.value)" required>
+                    <input id="email" type="email" placeholder="Email" id="email" name="email" oninput="checkEmail(this.value)" onchange="if (!checkEmail(this.value)) alert(`Email must be of format xyz@abc.pqr`);"required>
                     <div id="email-status" class="hidden text-danger"></div>
                 </div>  
                 
@@ -150,7 +150,7 @@ color: white;
                     <input type="password" placeholder="Password" id="password" name="password" required>
                 </div>    
                 <div class="item submit">                    
-                    <input type="submit" onclick="SubmitEvent" value="REGISTER">
+                    <button onclick="SubmitEvent" class="btn btn-dark">Register</button>
                 </div> 
             <div class="or">
                 <hr> or <hr>
@@ -179,22 +179,6 @@ color: white;
             </div>        
         </div>
     </div>
-    <script src="/scripts/adminRegisterValidation.js"></script>
+    <script src="/scripts/registerValidation.js"></script>
 </body>
-<script>
-     document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector(".form");
-            const submitButton = document.querySelector("#submitButton");
-
-            form.addEventListener("submit", function (event) {
-                event.preventDefault(); 
-                const loading = document.querySelector("#loading");
-                loading.classList.remove("d-none");
-                setTimeout(function () {
-                    loading.classList.add("d-none");
-                    form.submit();
-                }, 600);
-            });
-        });
-</script>
 </html>
