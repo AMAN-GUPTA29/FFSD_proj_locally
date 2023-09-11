@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Mynerve&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="/css/navbar.css">
+
+
+
+    <link href="/css/footer-aman.css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+    <style>
+        .special {
+            font-family: 'Anton', sans-serif;
+        }
+
+        .curve-border {
+            border-radius: 8px;
+        }
+
+        .flex-right {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('navAfterLogin') %>
+
+        <div class="container">
+            <h2># Profile</h2>
+        </div>
+        <div class="container mb-5 details p-5 bg-light curve-border">
+            <p>Name : <span class="special" id="special-name">
+
+                </span></p>
+            <p>Place : <span class="special" id="special-address">
+
+                </span><input onclick="unhide_place1()" type="button" name="Edit" value="Edit" class="mx-4" /></p>
+            <form class="hidden" id="form1" action="/customerUpdate">
+                <input type="text" id="inp1" name="address" required>
+                <input type="submit">
+            </form>
+            <p>Pincode : <span class="special" id="special-pincode">
+
+                </span><input onclick="unhide_place2()" type="button" name="Edit" value="Edit" class="mx-4" />
+            </p>
+            <form class="hidden" id="form2" action="/customerUpdate">
+                <input type="number" id="inp2" name="pincode" required>
+                <input type="submit">
+            </form>
+
+        </div>
+        <div class="container">
+            <h2># Your Transactions</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Rs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="https://upload.wikimedia.org/wikipedia/commons/6/60/Beautiful-pink-flower_-_West_Virginia_-_ForestWander.jpg"
+                                target="_blank">23123212312312</a></td>
+                        <td>14Feb23/10AM</td>
+                        <td>180.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
+                                target="_blank">37467123681723</a></td>
+                        <td>24Feb23/10AM</td>
+                        <td>1123.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg"
+                                target="_blank">37467123681723</a></td>
+                        <td>04Mar22/01PM</td>
+                        <td>115.00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">......</th>
+                        <td>......</td>
+                        <td>......</td>
+                        <td>......</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div><a href="/transaction" target="_blank">See
+                    more...</a></div>
+        </div>
+
+        <%- include('footer-aman') %>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous"></script>
+
+            <script>
+                function unhide_place1() {
+                    let palceForm = document.getElementById('form1')
+                    palceForm.classList.toggle('hidden')
+                }
+            </script>
+
+            <script>
+                function unhide_place2() {
+                    let palceForm = document.getElementById('form2')
+                    palceForm.classList.toggle('hidden')
+                }
+            </script>
+</body>
+
+</html>
+<h2># Your Transactions</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Date/Time</th>
+            <th scope="col">Rs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td><a href="https://upload.wikimedia.org/wikipedia/commons/6/60/Beautiful-pink-flower_-_West_Virginia_-_ForestWander.jpg"
+                    target="_blank">23123212312312</a></td>
+            <td>14Feb23/10AM</td>
+            <td>180.00</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg" target="_blank">37467123681723</a>
+            </td>
+            <td>24Feb23/10AM</td>
+            <td>1123.00</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td><a href="https://jfwonline.com/wp-content/uploads/2017/02/choco.jpeg" target="_blank">37467123681723</a>
+            </td>
+            <td>04Mar22/01PM</td>
+            <td>115.00</td>
+        </tr>
+        <tr>
+            <th scope="row">......</th>
+            <td>......</td>
+            <td>......</td>
+            <td>......</td>
+        </tr>
+    </tbody>
+</table>
+<div><a href="/transaction" target="_blank">See
+        more...</a></div>
+</div>
+
+<%- include('footer-aman') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function unhide_place1() {
+            let palceForm = document.getElementById('form1')
+            palceForm.classList.toggle('hidden')
+        }
+    </script>
+
+    <script>
+        function unhide_place2() {
+            let palceForm = document.getElementById('form2')
+            palceForm.classList.toggle('hidden')
+        }
+    </script>
+
+    <script>
+        let name = document.getElementById('special-name');
+        let address = document.getElementById('special-address');
+        let pincode = document.getElementById('special-pincode');
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let data = JSON.parse(xhr.response);
+                console.log(data)
+                name.innerHTML = `${data.name}`;
+                address.innerHTML = `${data.address}`;
+                pincode.innerHTML = `${data.pincode}`;
+            }
+        }
+
+        xhr.open('GET', '/api/customer/profile');
+        xhr.send();
+    </script>
+    </body>
+
+    </html>

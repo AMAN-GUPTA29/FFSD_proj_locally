@@ -172,7 +172,8 @@ app.get("/profile", redirectUnLoggedCustomer, (req, res) => {
     .then((doc) => {
       console.log("jgghjhjvvbjh");
       console.log(doc);
-      res.render("profile", doc[0]);
+      // res.render("profile", doc[0]);
+      res.render('api/customer/profile')
     })
     .catch((err) => console.log(err));
 });
@@ -1036,4 +1037,18 @@ app.get('/api/sellermail/:email', (req, res) => {
       console.log(err.message)
       res.end("<h1>Some error Occured</h1>")
     })
+})
+
+app.get('/api/customer/profile', (req, res) => {
+  let id = req.session.userID;
+
+  myModels.customerDetail
+    .where("pointer")
+    .equals(id)
+    .populate("pointer")
+    .then((doc) => {
+      doc = doc[0];
+      res.send({name : doc.pointer.name, address : doc.address, pincode : doc.pincode});
+    })
+    .catch((err) => console.log(err));
 })
