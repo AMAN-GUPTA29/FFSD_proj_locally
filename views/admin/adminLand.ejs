@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" 
+         href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+
     <link href="/css/footer-aman.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,15 +126,15 @@ block-size: fit-content;
 <body>
     <%- include('navbar') %>
     <div class="welcome mx-5 px-2 mt-3">
-        <h1>Welcome</h1>
-        <h1 class="mx-5 px-3">Mr.Admin</h1>
+        
+        <h1 class="mx-5 px-3 text-4xl text-center"> Welcome Mr.Admin</h1>
     </div>
 
     <div class="row justify-content-center mb-3 mt-1">
         <div class="content rounded-3 col-5 border my-4 mx-3 p-2 d-flex flex-column">
             <header class="ps-3">
-                <h3 class="dailyStastics">Daily</h3>
-            <h3 class="dailyStastics ps-2">Stastics</h3>
+           
+            <h3 class="dailyStastics ps-2 text-4xl"> Daily Statistics</h3>
             </header>
             <div class="matter">
                 <p class="">
@@ -145,7 +149,7 @@ block-size: fit-content;
             </div>
         </div>
         <div class="content2 col-5 my-4 mx-3 d-flex flex-column justify-content-center border rounded-3">
-            <div class="row Stastics rounded-3"><div class="col">Stastics</div> </div>
+            <div class="row Stastics rounded-3 text-4xl"><div class="col">Statistics</div> </div>
             <div class="row buttons">
                 <div class="row m-2">
                     <a href="admincustomer" class="link col-3 py-4 p-3 me-4 border bg-dark-subtle text-dark fw-bold border rounded-3 text-decoration-none">85 customers</a>
@@ -181,6 +185,31 @@ block-size: fit-content;
         </a>
     </div>
     </div>
+     <div class="max-w-[1200px] mx-auto py-[30px] grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
+           <div class=" group shadow-lg p-4 text-center  hover:bg-blue-500 hover:text-white duration-1000">
+            <i class="fas fa-laptop-code text-2xl duration-1000  animate-bounce group-hover:text-white text-blue-500"></i>
+            <h3 class="text-2xl">Web Design</h3>
+           </div>
+           <div class=" group shadow-lg p-4 text-center  hover:bg-blue-500 hover:text-white duration-1000">
+            <i class="fa fa-usd text-2xl duration-1000  animate-bounce group-hover:text-white text-blue-500"></i>
+            <h3 class="text-2xl">Revenue</h3>
+           </div>
+           <div class=" group shadow-lg p-4 text-center  hover:bg-blue-500 hover:text-white duration-1000">
+            <i class="fa fa-users text-2xl duration-1000  animate-bounce group-hover:text-white text-blue-500"></i>
+            <h3 class="text-2xl">Users</h3>
+           </div>
+           <div class=" group shadow-lg p-4 text-center  hover:bg-blue-500 hover:text-white duration-1000">
+            <i class="fa fa-line-chart text-2xl duration-1000  animate-bounce group-hover:text-white text-blue-500"></i>
+            <h3 class="text-2xl">Traffic</h3>
+           </div>
+    </div> 
+    <div  class="text-4xl my-8 text-center shadow-lg p-4 hover:bg-[#96B6C5] hover:text-white duration-1000">
+        ADD SERVICES
+    </div>
+    <div  class="text-4xl my-8 text-center shadow-lg p-4 hover:bg-[#96B6C5] hover:text-white duration-1000">
+        ADD TERMS AND CONDITIONS
+    </div>
+    <!-- <div class="flex min-h-screen items-center justify-center bg-neutral-900"
     <div class="d-flex justify-content-center py-5">
         <div class="px-2">
             <a href="#" class="btn btn-users">
@@ -212,11 +241,50 @@ block-size: fit-content;
               Messages
             </a>
           </div>
+    </div> -->
+
+    <!-- <h1 class="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Increase New Services To Provide</h1>
+
+    <h1 class="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Add New Terms & Conditions</h1> -->
+
+    <!-- <div class="flex min-h-screen items-center justify-center bg-neutral-800">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div class="h-96 w-72">
+            <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+          <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+            <h1 class="font-dmserif text-3xl font-bold text-white">Beauty</h1>
+            <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.</p>
+            <button class="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">See More</button>
+          </div>
+        </div>
+        <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div class="h-96 w-72">
+            <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src="https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+          <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+            <h1 class="font-dmserif text-3xl font-bold text-white">Beyond Builder</h1>
+            <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.</p>
+            <button class="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">See More</button>
+          </div>
+        </div> -->
+        <!-- <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div class="h-96 w-72">
+            <img class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src="https://images.unsplash.com/photo-1502675135487-e971002a6adb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="" />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+          <div class="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+            <h1 class="font-dmserif text-3xl font-bold text-white">Shooting Star</h1>
+            <p class="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolore adipisci placeat.</p>
+            <button class="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">See More</button>
+          </div>
+        </div> -->
+      </div>
     </div>
-
-    <h1 class="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Increase New Services To Provide</h1>
-
-    <h1 class="fs-1 fw-bold text-center border rounded-3 m-5 p-5">Add New Terms & Conditions</h1>
+    
 
     <%- include("footer-aman") %>
 
